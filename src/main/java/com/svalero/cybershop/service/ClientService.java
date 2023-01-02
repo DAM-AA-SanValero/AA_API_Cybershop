@@ -8,4 +8,6 @@ public interface ClientService {
 
     List<Client> findAll();
     Client findByName(String name);
+
+    Client addClient(Client client);
 }

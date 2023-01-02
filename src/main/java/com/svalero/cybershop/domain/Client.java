@@ -30,7 +30,6 @@ public class Client {
        private String surname;
 
        @Column
-       @Size(max=9)
        @PositiveOrZero
        private int mobileNumber;
 

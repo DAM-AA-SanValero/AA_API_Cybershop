@@ -26,6 +26,8 @@ public class Discount {
 
     @Column
     @Size(max = 500)
+    @NotBlank
+    @NotNull
     private String event;
 
     @Column
