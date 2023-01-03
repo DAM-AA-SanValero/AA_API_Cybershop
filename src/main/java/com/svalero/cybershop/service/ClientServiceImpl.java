@@ -20,7 +20,7 @@ public class ClientServiceImpl implements ClientService{
 
     @Override
     public Client findByName(String name) {
-        return null;
+        return clientRepository.findByName(name);
     }
 
     @Override

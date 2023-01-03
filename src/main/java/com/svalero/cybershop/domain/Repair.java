@@ -27,7 +27,7 @@ public class Repair {
 
     @Column
     @Size(max = 500)
-    private String description;
+    private String product;
 
     @Column
     @Size(max = 500)
