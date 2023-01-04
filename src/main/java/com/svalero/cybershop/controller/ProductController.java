@@ -11,6 +11,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,28 +23,34 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("/products")
-    public List<Product> getClient(){
-        return productService.findAll();
+    public ResponseEntity<List<Product>> getClient(){
+
+        return ResponseEntity.status(200).body(productService.findAll());
     }
 
     @GetMapping("/products/{id}")
-    public Product getClient(@PathVariable long id) throws ProductNotFoundException{
-        return productService.findById(id);
+    public ResponseEntity<Product> getClient(@PathVariable long id) throws ProductNotFoundException{
+        Product product = productService.findById(id);
+        return ResponseEntity.status(200).body(product);
     }
 
     @PostMapping("/products")
-    public void addProduct(@RequestBody Product product){
-        productService.addProduct(product);
+    public ResponseEntity<Product> addProduct(@Valid @RequestBody Product product){
+        Product newProduct = productService.addProduct(product);
+        return ResponseEntity.status(201).body(newProduct);
     }
 
     @DeleteMapping("/products/{id}")
-    public void deleteProduct(@PathVariable long id) throws ProductNotFoundException{
+    public ResponseEntity<Void> deleteProduct(@PathVariable long id) throws ProductNotFoundException{
         productService.deleteProduct(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("products/{id}")
-    public Product updateProduct(@PathVariable long id, @RequestBody Product product) throws ProductNotFoundException{
-        return productService.updateProduct(id, product);
+    public ResponseEntity<Product> updateProduct(@PathVariable long id, @RequestBody Product product)
+            throws ProductNotFoundException{
+        Product updateProduct = productService.updateProduct(id, product);
+        return ResponseEntity.status(200).body(updateProduct);
     }
 
     @ExceptionHandler(ProductNotFoundException.class)

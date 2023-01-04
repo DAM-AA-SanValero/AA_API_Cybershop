@@ -11,6 +11,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,29 +23,33 @@ public class ClientController {
     ClientService clientService;
 
     @GetMapping("/clients")
-    public List<Client> getClient(){
-        return clientService.findAll();
+    public ResponseEntity<List<Client>> getClient(){
+        return ResponseEntity.status(200).body(clientService.findAll());
 
     }
 
     @GetMapping("/clients/{id}")
-    public Client getClient(@PathVariable long id) throws ClientNotFoundException{
-        return clientService.findById(id);
+    public ResponseEntity<Client> getClient(@PathVariable long id) throws ClientNotFoundException{
+        Client client = clientService.findById(id);
+        return ResponseEntity.status(200).body(client);
     }
 
     @PostMapping("/clients")
-    public void addClient(@RequestBody Client client){
-        clientService.addClient(client);
+    public ResponseEntity<Client> addClient(@Valid @RequestBody Client client){
+        Client newClient = clientService.addClient(client);
+        return ResponseEntity.status(201).body(newClient);
     }
 
     @DeleteMapping("/clients/{id}")
-    public void deleteClient(@PathVariable long id) throws ClientNotFoundException{
+    public ResponseEntity<Void> deleteClient(@PathVariable long id) throws ClientNotFoundException{
         clientService.deleteClient(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/clients/{id}")
-    public Client updateClient(@PathVariable long id, @RequestBody Client client) throws ClientNotFoundException {
-        return clientService.updateClient(id, client);
+    public ResponseEntity<Client> updateClient(@PathVariable long id, @RequestBody Client client) throws ClientNotFoundException {
+        Client updateClient =clientService.updateClient(id, client);
+        return ResponseEntity.status(200).body(updateClient);
     }
 
     @ExceptionHandler(ClientNotFoundException.class)

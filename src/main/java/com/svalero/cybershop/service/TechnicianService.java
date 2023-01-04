@@ -15,6 +15,6 @@ public interface TechnicianService {
 
     void deleteTechnician(long id) throws TechnicianNotFoundException;
 
-    Technician updatedTechnician(long id, Technician technician) throws TechnicianNotFoundException;
+    Technician updateTechnician(long id, Technician technician) throws TechnicianNotFoundException;
 
 }

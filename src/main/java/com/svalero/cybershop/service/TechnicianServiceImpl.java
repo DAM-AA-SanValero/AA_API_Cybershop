@@ -35,7 +35,7 @@ public class TechnicianServiceImpl implements TechnicianService{
     }
 
     @Override
-    public Technician updatedTechnician(long id, Technician updateTechnician) throws TechnicianNotFoundException {
+    public Technician updateTechnician(long id, Technician updateTechnician) throws TechnicianNotFoundException {
         Technician oldTechnician = technicianRepository.findById(id).orElseThrow(TechnicianNotFoundException::new);
         oldTechnician.setName(updateTechnician.getName());
         oldTechnician.setSurname(updateTechnician.getSurname());

@@ -11,6 +11,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,27 +23,32 @@ public class TechnicianController {
     TechnicianService technicianService;
 
     @GetMapping("/technicians")
-    public List<Technician> getTechnician(){
-        return technicianService.findAll();
+    public ResponseEntity<List<Technician>> getTechnician(){
+        return ResponseEntity.status(200).body(technicianService.findAll());
     }
 
     @GetMapping("/technicians/{id}")
-    public Technician getTechnician(@PathVariable long id) throws TechnicianNotFoundException{
-        return technicianService.findById(id);
+    public ResponseEntity<Technician> getTechnician(@PathVariable long id) throws TechnicianNotFoundException{
+        Technician technician = technicianService.findById(id);
+        return ResponseEntity.status(200).body(technician);
     }
 
     @PostMapping("technicians")
-    public void addTechnician(@RequestBody Technician technician){
-        technicianService.addTechnician(technician);
+    public ResponseEntity<Technician> addTechnician(@Valid @RequestBody Technician technician){
+        Technician newTechnician = technicianService.addTechnician(technician);
+        return ResponseEntity.status(201).body(newTechnician);
     }
 
     @DeleteMapping("technicians/{id}")
-    public void deleteTechnician(@PathVariable long id) throws TechnicianNotFoundException{
+    public ResponseEntity<Void> deleteTechnician(@PathVariable long id) throws TechnicianNotFoundException{
         technicianService.deleteTechnician(id);
+        return ResponseEntity.noContent().build();
     }
     @PutMapping("technicians/{id}")
-    public Technician updateTechnician(@PathVariable long id, @RequestBody Technician technician) throws TechnicianNotFoundException{
-        return technicianService.updatedTechnician(id, technician);
+    public ResponseEntity<Technician> updateTechnician(@PathVariable long id, @RequestBody Technician technician)
+            throws TechnicianNotFoundException{
+        Technician updateTechnician = technicianService.updateTechnician(id,technician);
+        return ResponseEntity.status(200).body(updateTechnician);
 
     }
 

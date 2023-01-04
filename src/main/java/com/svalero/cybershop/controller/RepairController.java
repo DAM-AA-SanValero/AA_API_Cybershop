@@ -11,6 +11,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,28 +23,33 @@ public class RepairController {
     RepairService repairService;
 
     @GetMapping("/repairs")
-    public List<Repair> getRepair(){
-        return repairService.findAll();
+    public ResponseEntity<List<Repair>> getRepair(){
+        return ResponseEntity.status(200).body(repairService.findAll());
     }
 
     @GetMapping("/repairs/{id}")
-    public Repair getRepair(@PathVariable long id) throws RepairNotFoundException{
-        return repairService.findById(id);
+    public ResponseEntity<Repair> getRepair(@PathVariable long id) throws RepairNotFoundException{
+        Repair repair = repairService.findById(id);
+        return ResponseEntity.status(200).body(repair);
     }
 
     @PostMapping("/repairs")
-    public void addRepair(@RequestBody Repair repair){
-        repairService.addRepair(repair);
+    public ResponseEntity<Repair> addRepair(@Valid @RequestBody Repair repair){
+        Repair newRepair = repairService.addRepair(repair);
+        return ResponseEntity.status(201).body(newRepair);
     }
 
     @DeleteMapping("/repairs/{id}")
-    public void deleteRepair(@PathVariable long id) throws RepairNotFoundException{
+    public ResponseEntity<Void> deleteRepair(@PathVariable long id) throws RepairNotFoundException{
         repairService.deleteRepair(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("repairs/{id}")
-    public Repair updateRepair(@PathVariable long id, @RequestBody Repair repair) throws RepairNotFoundException{
-        return repairService.updateRepair(id, repair);
+    public ResponseEntity<Repair> updateRepair(@PathVariable long id, @RequestBody Repair repair)
+            throws RepairNotFoundException{
+        Repair updateRepair = repairService.updateRepair(id, repair);
+        return ResponseEntity.status(200).body(updateRepair);
     }
 
     @ExceptionHandler(RepairNotFoundException.class)

@@ -11,6 +11,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,29 +23,32 @@ public class DiscountController {
     DiscountService discountService;
 
     @GetMapping("/discounts")
-    public List<Discount> getDiscount(){
-        return discountService.findAll();
+    public ResponseEntity<List<Discount>> getDiscount(){
+        return ResponseEntity.status(200).body(discountService.findAll());
     }
 
     @GetMapping("/discounts/{id}")
     public ResponseEntity<Discount> getDiscount(@PathVariable long id) throws DiscountNotFoundException{
        Discount discount = discountService.findById(id);
-       return ResponseEntity.ok(discount);
+       return ResponseEntity.status(200).body(discount);
     }
 
     @PostMapping("/discounts")
-    public void addDiscount(@RequestBody Discount discount){
-        discountService.addDiscount(discount);
+    public ResponseEntity<Discount> addDiscount(@Valid @RequestBody Discount discount){
+        Discount newDiscount = discountService.addDiscount(discount);
+        return ResponseEntity.status(201).body(newDiscount);
     }
 
     @DeleteMapping("discounts/{id}")
-    public void deleteDiscount(@PathVariable long id) throws DiscountNotFoundException{
+    public ResponseEntity<Void> deleteDiscount(@PathVariable long id) throws DiscountNotFoundException{
         discountService.deleteDiscount(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/discounts/{id}")
-    public Discount updateDiscount(@PathVariable long id, @RequestBody Discount discount) throws DiscountNotFoundException{
-        return discountService.updateDiscount(id, discount);
+    public ResponseEntity<Discount> updateDiscount(@PathVariable long id, @RequestBody Discount discount) throws DiscountNotFoundException{
+        Discount updateDiscount = discountService.updateDiscount(id, discount);
+        return ResponseEntity.status(200).body(updateDiscount);
     }
 
     @ExceptionHandler(DiscountNotFoundException.class)
