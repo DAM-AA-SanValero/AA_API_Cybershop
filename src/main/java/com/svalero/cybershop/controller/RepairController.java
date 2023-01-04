@@ -27,4 +27,14 @@ public class RepairController {
     public void addRepair(@RequestBody Repair repair){
         repairService.addRepair(repair);
     }
+
+    @DeleteMapping("/repairs/{id}")
+    public void deleteRepair(@PathVariable long id){
+        repairService.deleteRepair(id);
+    }
+
+    @PutMapping("repairs/{id}")
+    public Repair updateRepair(@PathVariable long id, @RequestBody Repair repair){
+        return repairService.updateRepair(id, repair);
+    }
 }

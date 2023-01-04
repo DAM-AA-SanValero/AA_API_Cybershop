@@ -12,4 +12,8 @@ public interface TechnicianService {
 
     Technician addTechnician(Technician technician);
 
+    void deleteTechnician(long id);
+
+    Technician updatedTechnician(long id, Technician technician);
+
 }

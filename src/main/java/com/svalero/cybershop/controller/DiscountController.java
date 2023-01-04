@@ -30,4 +30,14 @@ public class DiscountController {
         discountService.addDiscount(discount);
     }
 
+    @DeleteMapping("discounts/{id}")
+    public void deleteDiscount(@PathVariable long id){
+        discountService.deleteDiscount(id);
+    }
+
+    @PutMapping("/discounts/{id}")
+    public Discount updateDiscount(@PathVariable long id, @RequestBody Discount discount){
+        return discountService.updateDiscount(id, discount);
+    }
+
 }

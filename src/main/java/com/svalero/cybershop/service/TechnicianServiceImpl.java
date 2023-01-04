@@ -22,9 +22,28 @@ public class TechnicianServiceImpl implements TechnicianService{
     public Technician findById(long id) {
         return technicianRepository.findById(id).orElseThrow();
     }
-
     @Override
     public Technician addTechnician(Technician technician) {
         return technicianRepository.save(technician);
     }
+
+    @Override
+    public void deleteTechnician(long id) {
+        Technician technician = technicianRepository.findById(id).orElseThrow();
+        technicianRepository.delete(technician);
+    }
+
+    @Override
+    public Technician updatedTechnician(long id, Technician updateTechnician) {
+        Technician oldTechnician = technicianRepository.findById(id).orElseThrow();
+        oldTechnician.setName(updateTechnician.getName());
+        oldTechnician.setSurname(updateTechnician.getSurname());
+        oldTechnician.setNumber(updateTechnician.getNumber());
+        oldTechnician.setDepartment(updateTechnician.getDepartment());
+        oldTechnician.setAvailable(updateTechnician.isAvailable());
+
+        return technicianRepository.save(oldTechnician);
+    }
+
+
 }

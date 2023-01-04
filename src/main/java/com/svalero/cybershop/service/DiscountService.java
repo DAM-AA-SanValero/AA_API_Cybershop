@@ -12,4 +12,7 @@ public interface DiscountService {
     Discount findById(long id);
 
     Discount addDiscount(Discount discount);
+
+    void deleteDiscount(long id);
+    Discount updateDiscount(long id, Discount discount);
 }

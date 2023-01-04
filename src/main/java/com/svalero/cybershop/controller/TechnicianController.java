@@ -28,4 +28,14 @@ public class TechnicianController {
         technicianService.addTechnician(technician);
     }
 
+    @DeleteMapping("technicians/{id}")
+    public void deleteTechnician(@PathVariable long id){
+        technicianService.deleteTechnician(id);
+    }
+    @PutMapping("technicians/{id}")
+    public Technician updateTechnician(@PathVariable long id, @RequestBody Technician technician){
+        return technicianService.updatedTechnician(id, technician);
+
+    }
+
 }

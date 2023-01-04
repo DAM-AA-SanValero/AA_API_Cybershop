@@ -14,6 +14,8 @@ public interface RepairService {
 
   Repair addRepair(Repair repair);
 
+  void deleteRepair(long id);
 
+  Repair updateRepair(long id, Repair repair);
 
 }

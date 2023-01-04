@@ -24,9 +24,27 @@ public class ProductServiceImpl implements ProductService{
     public Product findById(long id) {
         return productRepository.findById(id).orElseThrow();
     }
-
     @Override
     public Product addProduct(Product product) {
         return productRepository.save(product);
     }
+
+    @Override
+    public void deleteProduct(long id) {
+        Product product = productRepository.findById(id).orElseThrow();
+    }
+
+    @Override
+    public Product updateProduct(long id, Product updateProduct) {
+        Product oldProduct = productRepository.findById(id).orElseThrow();
+        oldProduct.setName(updateProduct.getName());
+        oldProduct.setType(updateProduct.getType());
+        oldProduct.setPrice(updateProduct.getPrice());
+        oldProduct.setOrigin(updateProduct.getOrigin());
+        oldProduct.setInStock(updateProduct.isInStock());
+
+        return productRepository.save(oldProduct);
+    }
+
+
 }

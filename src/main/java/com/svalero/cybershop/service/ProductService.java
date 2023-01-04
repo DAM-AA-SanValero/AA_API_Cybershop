@@ -10,5 +10,9 @@ public interface ProductService {
     Product findById(long id);
 
     Product addProduct(Product product);
+
+    void deleteProduct(long id);
+
+    Product updateProduct(long id, Product product);
 }
 
