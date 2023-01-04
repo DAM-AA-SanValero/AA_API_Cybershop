@@ -20,25 +20,25 @@ public class Repair {
     private long id;
 
     @Column
-    @Size(max = 20)
-    @NotNull
-    @NotBlank
+    @Size(max = 20, message = "<-- Este campo solo puede tener 20 caracteres")
+    @NotBlank(message = "<-- Este campo no puede estar vacio")
+    @NotNull(message = "<-- Este campo es obligatorio")
     private String component;
 
     @Column
-    @NotNull
-    @Positive
+    @NotNull(message = "<-- Este campo es obligatorio")
+    @Positive(message = "<-- Este campo solo puede contener números positivos")
     private float price;
 
     @Column
-    @Size(max = 500)
+    @Size(max = 500, message = "<-- Este campo solo puede tener 500 caracteres")
     private String shippingAddress;
 
     @Column
     private LocalDate shipmentDate;
 
     @Column
-    @PastOrPresent
+    @PastOrPresent(message = "<-- Este campo no admite fechas futuras, solo actuales o pasadas")
     private LocalDate repairedDate;
 
 

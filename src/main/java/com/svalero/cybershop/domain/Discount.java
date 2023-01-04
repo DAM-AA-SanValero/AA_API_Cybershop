@@ -20,18 +20,18 @@ public class Discount {
     private long id;
 
     @Column
-    @NotBlank
-    @NotNull
+    @NotBlank(message = "<-- Este campo no puede estar vacio")
+    @NotNull(message = "<-- Este campo es obligatorio")
     private String product;
 
     @Column
-    @Size(max = 500)
-    @NotBlank
-    @NotNull
+    @Size(max = 500, message = "<-- Este campo solo puede tener 500 caracteres")
+    @NotBlank(message = "<-- Este campo no puede estar vacio")
+    @NotNull(message = "<-- Este campo es obligatorio")
     private String event;
 
     @Column
-    @Negative
+    @Negative(message = "<-- Este campo solo puede ser contener números negativos")
     private float discounted;
 
     @Column

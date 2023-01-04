@@ -20,21 +20,21 @@ public class Client {
        private long id;
 
        @Column
-       @NotBlank
-       @NotNull
+       @NotBlank(message = "<-- Este campo no puede estar vacio")
+       @NotNull(message = "<-- Este campo es obligatorio")
        private String name;
 
        @Column
-       @NotBlank
-       @NotNull
+       @NotBlank(message = "<-- Este campo no puede estar vacio")
+       @NotNull(message = "<-- Este campo es obligatorio")
        private String surname;
 
        @Column
-       @PositiveOrZero
+       @PositiveOrZero(message = "<-- Este campo solo puede contener números positivos y 0")
        private int number;
 
        @Column
-       @PastOrPresent
+       @PastOrPresent(message = "<-- Este campo no admite fechas futuras, solo actuales o pasadas")
        private LocalDate registerDate;
 
        @Column

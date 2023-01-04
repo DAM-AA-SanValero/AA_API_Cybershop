@@ -23,19 +23,19 @@ public class Product {
     private long id;
 
     @Column
-    @NotNull
-    @NotBlank
+    @NotBlank(message = "<-- Este campo no puede estar vacio")
+    @NotNull(message = "<-- Este campo es obligatorio")
     private String name;
 
     @Column
-    @NotNull
-    @NotBlank
-    @Size(max = 20)
+    @NotBlank(message = "<-- Este campo no puede estar vacio")
+    @NotNull(message = "<-- Este campo es obligatorio")
+    @Size(max = 20, message = "<-- Este campo solo puede tener 20 caracteres")
     private String type;
 
     @Column
-    @NotNull
-    @Positive
+    @NotNull(message = "<-- Este campo es obligatorio")
+    @Positive(message = "<-- Este campo solo puede contener números positivos y es obligatorio")
     private float price;
 
     @Column

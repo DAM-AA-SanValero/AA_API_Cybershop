@@ -21,21 +21,21 @@ public class Technician {
     private long id;
 
     @Column
-    @NotBlank
-    @NotNull
+    @NotBlank(message = "<-- Este campo no puede estar vacio")
+    @NotNull(message = "<-- Este campo es obligatorio")
     private String name;
 
     @Column
-    @NotBlank
-    @NotNull
+    @NotBlank(message = "<-- Este campo no puede estar vacio")
+    @NotNull(message = "<-- Este campo es obligatorio")
     private String surname;
 
     @Column
-    @PositiveOrZero
+    @PositiveOrZero(message = "<-- Este campo solo puede contener números positivos y 0")
     private int number;
 
     @Column
-    @NotNull
+    @NotNull(message = "<-- Este campo es obligatorio")
     private String department;
 
     @Column
