@@ -1,6 +1,7 @@
 package com.svalero.cybershop.service;
 
 import com.svalero.cybershop.domain.Repair;
+import com.svalero.cybershop.exception.RepairNotFoundException;
 import com.svalero.cybershop.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,8 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public Repair findById(long id) {
-        return repairRepository.findById(id).orElseThrow();
+    public Repair findById(long id) throws RepairNotFoundException {
+        return repairRepository.findById(id).orElseThrow(RepairNotFoundException::new);
     }
 
     @Override
@@ -30,14 +31,14 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public void deleteRepair(long id) {
-        Repair repair = repairRepository.findById(id).orElseThrow();
+    public void deleteRepair(long id) throws RepairNotFoundException {
+        Repair repair = repairRepository.findById(id).orElseThrow(RepairNotFoundException::new);
         repairRepository.delete(repair);
     }
 
     @Override
-    public Repair updateRepair(long id, Repair updateRepair) {
-        Repair oldRepair = repairRepository.findById(id).orElseThrow();
+    public Repair updateRepair(long id, Repair updateRepair) throws RepairNotFoundException{
+        Repair oldRepair = repairRepository.findById(id).orElseThrow(RepairNotFoundException::new);
         oldRepair.setComponent(updateRepair.getComponent());
         oldRepair.setPrice(updateRepair.getPrice());
         oldRepair.setShippingAddress(updateRepair.getShippingAddress());

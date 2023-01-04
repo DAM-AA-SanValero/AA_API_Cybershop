@@ -2,6 +2,7 @@ package com.svalero.cybershop.service;
 
 import com.svalero.cybershop.domain.Client;
 import com.svalero.cybershop.domain.Product;
+import com.svalero.cybershop.exception.ProductNotFoundException;
 import com.svalero.cybershop.repository.ClientRepository;
 import com.svalero.cybershop.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,8 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product findById(long id) {
-        return productRepository.findById(id).orElseThrow();
+    public Product findById(long id) throws ProductNotFoundException {
+        return productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
     }
     @Override
     public Product addProduct(Product product) {
@@ -30,13 +31,13 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void deleteProduct(long id) {
-        Product product = productRepository.findById(id).orElseThrow();
+    public void deleteProduct(long id) throws ProductNotFoundException {
+        Product product = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
     }
 
     @Override
-    public Product updateProduct(long id, Product updateProduct) {
-        Product oldProduct = productRepository.findById(id).orElseThrow();
+    public Product updateProduct(long id, Product updateProduct) throws ProductNotFoundException{
+        Product oldProduct = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
         oldProduct.setName(updateProduct.getName());
         oldProduct.setType(updateProduct.getType());
         oldProduct.setPrice(updateProduct.getPrice());

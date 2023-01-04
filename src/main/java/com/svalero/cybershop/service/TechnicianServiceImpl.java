@@ -1,6 +1,7 @@
 package com.svalero.cybershop.service;
 
 import com.svalero.cybershop.domain.Technician;
+import com.svalero.cybershop.exception.TechnicianNotFoundException;
 import com.svalero.cybershop.repository.TechnicianRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,8 @@ public class TechnicianServiceImpl implements TechnicianService{
     }
 
     @Override
-    public Technician findById(long id) {
-        return technicianRepository.findById(id).orElseThrow();
+    public Technician findById(long id) throws TechnicianNotFoundException {
+        return technicianRepository.findById(id).orElseThrow(TechnicianNotFoundException::new);
     }
     @Override
     public Technician addTechnician(Technician technician) {
@@ -28,14 +29,14 @@ public class TechnicianServiceImpl implements TechnicianService{
     }
 
     @Override
-    public void deleteTechnician(long id) {
-        Technician technician = technicianRepository.findById(id).orElseThrow();
+    public void deleteTechnician(long id) throws TechnicianNotFoundException{
+        Technician technician = technicianRepository.findById(id).orElseThrow(TechnicianNotFoundException::new);
         technicianRepository.delete(technician);
     }
 
     @Override
-    public Technician updatedTechnician(long id, Technician updateTechnician) {
-        Technician oldTechnician = technicianRepository.findById(id).orElseThrow();
+    public Technician updatedTechnician(long id, Technician updateTechnician) throws TechnicianNotFoundException {
+        Technician oldTechnician = technicianRepository.findById(id).orElseThrow(TechnicianNotFoundException::new);
         oldTechnician.setName(updateTechnician.getName());
         oldTechnician.setSurname(updateTechnician.getSurname());
         oldTechnician.setNumber(updateTechnician.getNumber());

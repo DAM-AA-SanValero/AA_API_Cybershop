@@ -1,6 +1,7 @@
 package com.svalero.cybershop.service;
 
 import com.svalero.cybershop.domain.Repair;
+import com.svalero.cybershop.exception.RepairNotFoundException;
 import com.svalero.cybershop.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,12 +11,12 @@ public interface RepairService {
 
   List<Repair> findAll();
 
-  Repair findById(long id);
+  Repair findById(long id) throws RepairNotFoundException;
 
   Repair addRepair(Repair repair);
 
-  void deleteRepair(long id);
+  void deleteRepair(long id) throws RepairNotFoundException;
 
-  Repair updateRepair(long id, Repair repair);
+  Repair updateRepair(long id, Repair repair) throws RepairNotFoundException;
 
 }
