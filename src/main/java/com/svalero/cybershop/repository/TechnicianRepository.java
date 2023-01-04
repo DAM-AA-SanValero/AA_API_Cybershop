@@ -10,6 +10,4 @@ import java.util.List;
 public interface TechnicianRepository extends CrudRepository<Technician, Long> {
 
     List<Technician> findAll();
-
-    Technician findByName(String name);
 }

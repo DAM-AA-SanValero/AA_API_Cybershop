@@ -11,6 +11,4 @@ public interface RepairRepository extends CrudRepository<Repair, Long> {
 
     List<Repair> findAll();
 
-    Repair findByProduct(String product);
-
 }

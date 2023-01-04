@@ -20,14 +20,15 @@ public class Repair {
     private long id;
 
     @Column
+    @Size(max = 20)
     @NotNull
     @NotBlank
-    @Positive
-    private float price;
+    private String component;
 
     @Column
-    @Size(max = 500)
-    private String product;
+    @NotNull
+    @Positive
+    private float price;
 
     @Column
     @Size(max = 500)

@@ -10,7 +10,7 @@ public interface RepairService {
 
   List<Repair> findAll();
 
-  Repair findByProduct(String product);
+  Repair findById(long id);
 
   Repair addRepair(Repair repair);
 

@@ -3,10 +3,7 @@ package com.svalero.cybershop.controller;
 import com.svalero.cybershop.domain.Repair;
 import com.svalero.cybershop.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +16,11 @@ public class RepairController {
     @GetMapping("/repairs")
     public List<Repair> getRepair(){
         return repairService.findAll();
+    }
+
+    @GetMapping("/repairs/{id}")
+    public Repair getRepair(@PathVariable long id){
+        return repairService.findById(id);
     }
 
     @PostMapping("/repairs")

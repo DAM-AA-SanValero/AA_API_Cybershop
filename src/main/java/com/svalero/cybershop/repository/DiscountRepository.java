@@ -11,7 +11,5 @@ public interface DiscountRepository extends CrudRepository<Discount, Long> {
 
     List<Discount> findAll();
 
-    Discount findByEvent(String event);
-
 
 }

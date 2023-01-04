@@ -19,8 +19,8 @@ public class TechnicianServiceImpl implements TechnicianService{
     }
 
     @Override
-    public Technician findByName(String name) {
-        return technicianRepository.findByName(name);
+    public Technician findById(long id) {
+        return technicianRepository.findById(id).orElseThrow();
     }
 
     @Override

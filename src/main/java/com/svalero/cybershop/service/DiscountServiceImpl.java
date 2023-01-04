@@ -19,8 +19,8 @@ public class DiscountServiceImpl implements DiscountService {
     }
 
     @Override
-    public Discount findByEvent(String event) {
-        return discountRepository.findByEvent(event);
+    public Discount findById(long id) {
+        return discountRepository.findById(id).orElseThrow();
     }
 
     @Override

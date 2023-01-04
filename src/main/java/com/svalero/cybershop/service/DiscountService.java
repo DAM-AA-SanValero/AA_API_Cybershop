@@ -9,7 +9,7 @@ public interface DiscountService {
 
     List<Discount> findAll();
 
-    Discount findByEvent(String event);
+    Discount findById(long id);
 
     Discount addDiscount(Discount discount);
 }

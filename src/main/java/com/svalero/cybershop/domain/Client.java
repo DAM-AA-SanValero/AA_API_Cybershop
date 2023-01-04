@@ -31,14 +31,14 @@ public class Client {
 
        @Column
        @PositiveOrZero
-       private int mobileNumber;
+       private int number;
 
        @Column
        @PastOrPresent
        private LocalDate registerDate;
 
        @Column
-       private boolean isVIP;
+       private boolean vip;
 
 
 }

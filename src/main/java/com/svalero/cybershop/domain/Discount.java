@@ -22,7 +22,7 @@ public class Discount {
     @Column
     @NotBlank
     @NotNull
-    private String productDiscount;
+    private String product;
 
     @Column
     @Size(max = 500)
@@ -32,7 +32,7 @@ public class Discount {
 
     @Column
     @Negative
-    private float discountDifference;
+    private float discounted;
 
     @Column
     private LocalDate startDiscount;

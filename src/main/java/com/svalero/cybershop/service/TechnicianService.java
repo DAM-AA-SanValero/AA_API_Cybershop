@@ -8,7 +8,7 @@ public interface TechnicianService {
 
     List<Technician> findAll();
 
-    Technician findByName(String name);
+    Technician findById(long id);
 
     Technician addTechnician(Technician technician);
 

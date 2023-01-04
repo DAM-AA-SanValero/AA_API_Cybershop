@@ -20,8 +20,8 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public Repair findByProduct(String product) {
-        return repairRepository.findByProduct(product);
+    public Repair findById(long id) {
+        return repairRepository.findById(id).orElseThrow();
     }
 
     @Override

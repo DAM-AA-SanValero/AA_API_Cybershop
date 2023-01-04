@@ -31,15 +31,15 @@ public class Technician {
     private String surname;
 
     @Column
-    @Size(max=9)
     @PositiveOrZero
-    private int mobileNumber;
+    private int number;
 
     @Column
+    @NotNull
     private String department;
 
     @Column
-    private boolean isAvailable;
+    private boolean available;
 
 
 
