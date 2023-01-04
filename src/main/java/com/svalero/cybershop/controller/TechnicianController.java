@@ -4,6 +4,8 @@ import com.svalero.cybershop.domain.Technician;
 import com.svalero.cybershop.exception.ErrorMessage;
 import com.svalero.cybershop.exception.TechnicianNotFoundException;
 import com.svalero.cybershop.service.TechnicianService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,41 +21,48 @@ import java.util.Map;
 @RestController
 public class TechnicianController {
 
+    private final Logger logger = LoggerFactory.getLogger(TechnicianController.class);
     @Autowired
     TechnicianService technicianService;
 
     @GetMapping("/technicians")
     public ResponseEntity<List<Technician>> getTechnician(){
+        logger.info("Lista de técnicos mostrada");
         return ResponseEntity.status(200).body(technicianService.findAll());
     }
 
     @GetMapping("/technicians/{id}")
     public ResponseEntity<Technician> getTechnician(@PathVariable long id) throws TechnicianNotFoundException{
         Technician technician = technicianService.findById(id);
+        logger.info("Técnico mostrado con el id: "+id);
         return ResponseEntity.status(200).body(technician);
     }
 
     @PostMapping("technicians")
     public ResponseEntity<Technician> addTechnician(@Valid @RequestBody Technician technician){
         Technician newTechnician = technicianService.addTechnician(technician);
+        logger.info("Técnico añadido");
         return ResponseEntity.status(201).body(newTechnician);
     }
 
     @DeleteMapping("technicians/{id}")
     public ResponseEntity<Void> deleteTechnician(@PathVariable long id) throws TechnicianNotFoundException{
         technicianService.deleteTechnician(id);
+        logger.info("Técnico borrado");
         return ResponseEntity.noContent().build();
     }
     @PutMapping("technicians/{id}")
     public ResponseEntity<Technician> updateTechnician(@PathVariable long id, @RequestBody Technician technician)
             throws TechnicianNotFoundException{
         Technician updateTechnician = technicianService.updateTechnician(id,technician);
+        logger.info("Técnico actualizado");
         return ResponseEntity.status(200).body(updateTechnician);
 
     }
 
     @ExceptionHandler(TechnicianNotFoundException.class)
     public ResponseEntity<ErrorMessage> clientNotFoundException(TechnicianNotFoundException tnfe){
+        logger.error(tnfe.getMessage(),tnfe);
         ErrorMessage notfound = new ErrorMessage(404,tnfe.getMessage());
         return new ResponseEntity<>(notfound, HttpStatus.NOT_FOUND);
     }
@@ -69,12 +78,14 @@ public class TechnicianController {
             errors.put(fieldname, message);
         });
 
+        logger.error(manve.getMessage(),manve);
         ErrorMessage badRequest = new ErrorMessage(400, "Bad Request", errors);
         return new ResponseEntity<>(badRequest, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorMessage> handleException(Exception e) {
+        logger.error(e.getMessage(),e);
         ErrorMessage errorMessage = new ErrorMessage(500, "Internal Server Error");
         return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }

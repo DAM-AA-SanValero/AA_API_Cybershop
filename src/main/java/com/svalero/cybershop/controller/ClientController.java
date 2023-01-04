@@ -4,6 +4,8 @@ import com.svalero.cybershop.domain.Client;
 import com.svalero.cybershop.exception.ClientNotFoundException;
 import com.svalero.cybershop.exception.ErrorMessage;
 import com.svalero.cybershop.service.ClientService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +21,13 @@ import java.util.Map;
 @RestController
 public class ClientController {
 
+    private final Logger logger = LoggerFactory.getLogger(ClientController.class);
     @Autowired
     ClientService clientService;
 
     @GetMapping("/clients")
     public ResponseEntity<List<Client>> getClient(){
+        logger.info("Lista de clientes mostrada");
         return ResponseEntity.status(200).body(clientService.findAll());
 
     }
@@ -31,29 +35,34 @@ public class ClientController {
     @GetMapping("/clients/{id}")
     public ResponseEntity<Client> getClient(@PathVariable long id) throws ClientNotFoundException{
         Client client = clientService.findById(id);
+        logger.info("Cliente mostrado con el id: "+id);
         return ResponseEntity.status(200).body(client);
     }
 
     @PostMapping("/clients")
     public ResponseEntity<Client> addClient(@Valid @RequestBody Client client){
         Client newClient = clientService.addClient(client);
+        logger.info("Cliente añadido");
         return ResponseEntity.status(201).body(newClient);
     }
 
     @DeleteMapping("/clients/{id}")
     public ResponseEntity<Void> deleteClient(@PathVariable long id) throws ClientNotFoundException{
         clientService.deleteClient(id);
+        logger.info("Cliente borrado");
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/clients/{id}")
     public ResponseEntity<Client> updateClient(@PathVariable long id, @RequestBody Client client) throws ClientNotFoundException {
         Client updateClient =clientService.updateClient(id, client);
+        logger.info("Cliente modificado");
         return ResponseEntity.status(200).body(updateClient);
     }
 
     @ExceptionHandler(ClientNotFoundException.class)
     public ResponseEntity<ErrorMessage> clientNotFoundException(ClientNotFoundException cnfe){
+        logger.error(cnfe.getMessage(),cnfe);
         ErrorMessage notfound = new ErrorMessage(404,cnfe.getMessage());
         return new ResponseEntity<>(notfound, HttpStatus.NOT_FOUND);
     }
@@ -69,12 +78,14 @@ public class ClientController {
             errors.put(fieldname, message);
         });
 
+        logger.error(manve.getMessage(),manve);
         ErrorMessage badRequest = new ErrorMessage(400, "Bad Request", errors);
         return new ResponseEntity<>(badRequest, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorMessage> handleException(Exception e) {
+        logger.error(e.getMessage(),e);
         ErrorMessage errorMessage = new ErrorMessage(500, "Internal Server Error");
         return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }

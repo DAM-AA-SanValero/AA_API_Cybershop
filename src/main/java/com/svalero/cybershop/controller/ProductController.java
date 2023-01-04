@@ -4,6 +4,8 @@ import com.svalero.cybershop.domain.Product;
 import com.svalero.cybershop.exception.ErrorMessage;
 import com.svalero.cybershop.exception.ProductNotFoundException;
 import com.svalero.cybershop.service.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,30 +21,34 @@ import java.util.Map;
 @RestController
 public class ProductController {
 
+    private final Logger logger = LoggerFactory.getLogger(ProductController.class);
     @Autowired
     ProductService productService;
 
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getClient(){
-
+        logger.info("Lista de productos mostrada");
         return ResponseEntity.status(200).body(productService.findAll());
     }
 
     @GetMapping("/products/{id}")
     public ResponseEntity<Product> getClient(@PathVariable long id) throws ProductNotFoundException{
         Product product = productService.findById(id);
+        logger.info("Producto mostrado con el id: "+id);
         return ResponseEntity.status(200).body(product);
     }
 
     @PostMapping("/products")
     public ResponseEntity<Product> addProduct(@Valid @RequestBody Product product){
         Product newProduct = productService.addProduct(product);
+        logger.info("Producto añadido");
         return ResponseEntity.status(201).body(newProduct);
     }
 
     @DeleteMapping("/products/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable long id) throws ProductNotFoundException{
         productService.deleteProduct(id);
+        logger.info("Producto borrado");
         return ResponseEntity.noContent().build();
     }
 
@@ -50,11 +56,13 @@ public class ProductController {
     public ResponseEntity<Product> updateProduct(@PathVariable long id, @RequestBody Product product)
             throws ProductNotFoundException{
         Product updateProduct = productService.updateProduct(id, product);
+        logger.info("Producto actualizado");
         return ResponseEntity.status(200).body(updateProduct);
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ErrorMessage> clientNotFoundException(ProductNotFoundException pnfe){
+        logger.error(pnfe.getMessage(),pnfe);
         ErrorMessage notfound = new ErrorMessage(404,pnfe.getMessage());
         return new ResponseEntity<>(notfound, HttpStatus.NOT_FOUND);
     }
@@ -70,12 +78,14 @@ public class ProductController {
             errors.put(fieldname, message);
         });
 
+        logger.error(manve.getMessage(),manve);
         ErrorMessage badRequest = new ErrorMessage(400, "Bad Request", errors);
         return new ResponseEntity<>(badRequest, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorMessage> handleException(Exception e) {
+        logger.error(e.getMessage(),e);
         ErrorMessage errorMessage = new ErrorMessage(500, "Internal Server Error");
         return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }
