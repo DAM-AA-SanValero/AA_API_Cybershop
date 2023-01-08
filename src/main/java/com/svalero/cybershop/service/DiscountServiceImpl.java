@@ -1,6 +1,7 @@
 package com.svalero.cybershop.service;
 
 import com.svalero.cybershop.domain.Discount;
+import com.svalero.cybershop.exception.ClientNotFoundException;
 import com.svalero.cybershop.exception.DiscountNotFoundException;
 import com.svalero.cybershop.repository.DiscountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,17 @@ public class DiscountServiceImpl implements DiscountService {
         oldDiscount.setEndDiscount(updateDiscount.getEndDiscount());
 
         return discountRepository.save(oldDiscount);
+    }
+
+    @Override
+    public Discount updateDiscountDifference(long id, float newDiscount) throws DiscountNotFoundException {
+        Discount discount = discountRepository.findById(id).orElseThrow(DiscountNotFoundException::new);
+        discount.setDiscounted(newDiscount);
+        return discountRepository.save(discount);
+    }
+
+    @Override
+    public List<Discount> filterByProduct(String product) throws DiscountNotFoundException {
+        return discountRepository.findByProduct(product);
     }
 }

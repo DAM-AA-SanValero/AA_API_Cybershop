@@ -15,5 +15,10 @@ public interface ClientService {
     void deleteClient(long id) throws ClientNotFoundException;
 
     Client updateClient(long id, Client updateClient) throws ClientNotFoundException;
+    Client updateClientName(long id, String newName) throws ClientNotFoundException;
+
+    List<Client> filterByVip(boolean vip) throws ClientNotFoundException;
+
+
 
 }

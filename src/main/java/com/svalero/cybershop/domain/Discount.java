@@ -1,5 +1,6 @@
 package com.svalero.cybershop.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import org.springframework.format.annotation.NumberFormat;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -39,6 +41,11 @@ public class Discount {
 
     @Column
     private LocalDate endDiscount;
+
+
+    @OneToMany(mappedBy = "id")
+    @JsonBackReference(value = "dicount-product")
+    private List<Product> products;
 
 
 }

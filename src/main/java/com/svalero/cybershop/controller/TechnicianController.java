@@ -26,9 +26,15 @@ public class TechnicianController {
     TechnicianService technicianService;
 
     @GetMapping("/technicians")
-    public ResponseEntity<List<Technician>> getTechnician(){
-        logger.info("Lista de técnicos mostrada");
-        return ResponseEntity.status(200).body(technicianService.findAll());
+    public ResponseEntity<List<Technician>> getTechnician(@RequestParam(name="number", required = false, defaultValue = "")
+                                                          String number) throws TechnicianNotFoundException{
+        if(number.equals("")){
+            logger.info("Lista de técnicos mostrada");
+            return ResponseEntity.status(200).body(technicianService.findAll());
+        }
+        logger.info("Lista filtrada por numero de técnico");
+        return ResponseEntity.status(200).body(technicianService.filterByNumber(Integer.parseInt(number)));
+
     }
 
     @GetMapping("/technicians/{id}")
@@ -60,8 +66,17 @@ public class TechnicianController {
 
     }
 
+    @PatchMapping("technicians/{id}")
+    public ResponseEntity<Technician> updateTechnicianPartially(@PathVariable long id, @RequestBody Technician technician)
+            throws TechnicianNotFoundException{
+        Technician updateTechnicianAvailability = technicianService.updateTechnicianAvailability(id,technician.isAvailable());
+        logger.info("¿Disponibilidad del técnico?: "+technician.isAvailable());
+        return ResponseEntity.status(200).body(updateTechnicianAvailability);
+
+    }
+
     @ExceptionHandler(TechnicianNotFoundException.class)
-    public ResponseEntity<ErrorMessage> clientNotFoundException(TechnicianNotFoundException tnfe){
+    public ResponseEntity<ErrorMessage> techinicianNotFoundException(TechnicianNotFoundException tnfe){
         logger.error(tnfe.getMessage(),tnfe);
         ErrorMessage notfound = new ErrorMessage(404,tnfe.getMessage());
         return new ResponseEntity<>(notfound, HttpStatus.NOT_FOUND);

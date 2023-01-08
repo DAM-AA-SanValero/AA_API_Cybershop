@@ -6,6 +6,7 @@ import com.svalero.cybershop.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -46,5 +47,17 @@ public class RepairServiceImpl implements RepairService {
         oldRepair.setRepairedDate(updateRepair.getRepairedDate());
 
         return repairRepository.save(oldRepair);
+    }
+
+    @Override
+    public Repair updateRepairedDate(long id, LocalDate newRepair) throws RepairNotFoundException {
+        Repair repair = repairRepository.findById(id).orElseThrow(RepairNotFoundException::new);
+        repair.setRepairedDate(newRepair);
+        return repairRepository.save(repair);
+    }
+
+    @Override
+    public List<Repair> filterByShipmentDate(LocalDate shipmentDate) throws RepairNotFoundException {
+        return repairRepository.findByShipmentDate(shipmentDate);
     }
 }

@@ -46,5 +46,17 @@ public class TechnicianServiceImpl implements TechnicianService{
         return technicianRepository.save(oldTechnician);
     }
 
+    @Override
+    public Technician updateTechnicianAvailability(long id, boolean availability) throws TechnicianNotFoundException {
+        Technician technician = technicianRepository.findById(id).orElseThrow(TechnicianNotFoundException::new);
+        technician.setAvailable(availability);
+        return technicianRepository.save(technician);
+    }
+
+    @Override
+    public List<Technician> filterByNumber(int number) throws TechnicianNotFoundException {
+        return technicianRepository.findByNumber(number);
+    }
+
 
 }

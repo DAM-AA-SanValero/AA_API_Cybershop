@@ -1,7 +1,9 @@
 package com.svalero.cybershop.service;
 
 import com.svalero.cybershop.domain.Client;
+import com.svalero.cybershop.domain.Discount;
 import com.svalero.cybershop.domain.Product;
+import com.svalero.cybershop.exception.ClientNotFoundException;
 import com.svalero.cybershop.exception.ProductNotFoundException;
 import com.svalero.cybershop.repository.ClientRepository;
 import com.svalero.cybershop.repository.ProductRepository;
@@ -45,6 +47,18 @@ public class ProductServiceImpl implements ProductService{
         oldProduct.setInStock(updateProduct.isInStock());
 
         return productRepository.save(oldProduct);
+    }
+
+    @Override
+    public Product updateProductPrice(long id, float newPrice) throws ProductNotFoundException {
+        Product product = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        product.setPrice(newPrice);
+        return productRepository.save(product);
+    }
+
+    @Override
+    public List<Product> filterByInStock(boolean stock) throws ProductNotFoundException {
+        return productRepository.findByInStock(stock);
     }
 
 

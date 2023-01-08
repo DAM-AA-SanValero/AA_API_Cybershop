@@ -14,6 +14,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,9 +27,15 @@ public class RepairController {
     RepairService repairService;
 
     @GetMapping("/repairs")
-    public ResponseEntity<List<Repair>> getRepair(){
-        logger.info("Lista de reparaciones mostrada");
-        return ResponseEntity.status(200).body(repairService.findAll());
+    public ResponseEntity<List<Repair>> getRepair(@RequestParam(name="shipmentDate",required = false, defaultValue = "")
+                                                  String shipmentDate) throws RepairNotFoundException {
+        if(shipmentDate.equals("")){
+            logger.info("Lista de reparaciones mostrada");
+            return ResponseEntity.status(200).body(repairService.findAll());
+        }
+        logger.info("Filtrado por fecha de envio");
+        return ResponseEntity.status(200).body(repairService.filterByShipmentDate(LocalDate.parse(shipmentDate)));
+
     }
 
     @GetMapping("/repairs/{id}")
@@ -60,8 +67,16 @@ public class RepairController {
         return ResponseEntity.status(200).body(updateRepair);
     }
 
+    @PatchMapping("repairs/{id}")
+    public ResponseEntity<Repair> updateRepairPartially(@PathVariable long id, @RequestBody Repair repair)
+            throws RepairNotFoundException{
+        Repair updateRepairedDate = repairService.updateRepairedDate(id, repair.getRepairedDate());
+        logger.info("Fecha de reparación actualizada a: "+repair.getRepairedDate());
+        return ResponseEntity.status(200).body(updateRepairedDate);
+    }
+
     @ExceptionHandler(RepairNotFoundException.class)
-    public ResponseEntity<ErrorMessage> clientNotFoundException(RepairNotFoundException rnfe){
+    public ResponseEntity<ErrorMessage> repairNotFoundException(RepairNotFoundException rnfe){
         logger.error(rnfe.getMessage(),rnfe);
         ErrorMessage notfound = new ErrorMessage(404,rnfe.getMessage());
         return new ResponseEntity<>(notfound, HttpStatus.NOT_FOUND);

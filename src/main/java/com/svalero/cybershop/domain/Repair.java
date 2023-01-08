@@ -41,6 +41,16 @@ public class Repair {
     @PastOrPresent(message = "<-- Este campo no admite fechas futuras, solo actuales o pasadas")
     private LocalDate repairedDate;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product_id;
+
+    @ManyToOne
+    @JoinColumn(name = "technician_id")
+    private Technician technician_id;
+
+
+
 
 
 }

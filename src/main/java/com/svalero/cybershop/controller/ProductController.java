@@ -26,13 +26,18 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getClient(){
-        logger.info("Lista de productos mostrada");
-        return ResponseEntity.status(200).body(productService.findAll());
+    public ResponseEntity<List<Product>> getProduct(@RequestParam(name="stock",required = false, defaultValue = "")
+                                                        String stock) throws ProductNotFoundException{
+        if(stock.equals("")){
+            logger.info("Lista de productos mostrada");
+            return ResponseEntity.status(200).body(productService.findAll());
+        }
+        logger.info("Filtro por producto en Stock");
+        return ResponseEntity.status(200).body(productService.filterByInStock(Boolean.parseBoolean(stock)));
     }
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<Product> getClient(@PathVariable long id) throws ProductNotFoundException{
+    public ResponseEntity<Product> getProduct(@PathVariable long id) throws ProductNotFoundException{
         Product product = productService.findById(id);
         logger.info("Producto mostrado con el id: "+id);
         return ResponseEntity.status(200).body(product);
@@ -60,8 +65,16 @@ public class ProductController {
         return ResponseEntity.status(200).body(updateProduct);
     }
 
+    @PatchMapping("products/{id}")
+    public ResponseEntity<Product> updateProductPartially(@PathVariable long id, @RequestBody Product product)
+            throws ProductNotFoundException{
+        Product updateProductPrice = productService.updateProductPrice(id, product.getPrice());
+        logger.info("Precio del producto actualizado a "+product.getPrice());
+        return ResponseEntity.status(200).body(updateProductPrice);
+    }
+
     @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<ErrorMessage> clientNotFoundException(ProductNotFoundException pnfe){
+    public ResponseEntity<ErrorMessage> productNotFoundException(ProductNotFoundException pnfe){
         logger.error(pnfe.getMessage(),pnfe);
         ErrorMessage notfound = new ErrorMessage(404,pnfe.getMessage());
         return new ResponseEntity<>(notfound, HttpStatus.NOT_FOUND);

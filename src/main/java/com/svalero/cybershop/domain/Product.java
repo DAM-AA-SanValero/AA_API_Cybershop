@@ -44,4 +44,19 @@ public class Product {
     @Column
     private boolean inStock;
 
+    @OneToMany(mappedBy = "id")
+    @JsonBackReference(value = "product-repairs")
+    private List<Repair> repairs;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client_id;
+
+    @ManyToOne
+    @JoinColumn(name = "discount_id")
+    private Discount discount_id;
+
+
+
+
 }

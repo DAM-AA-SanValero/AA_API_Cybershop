@@ -1,6 +1,8 @@
 package com.svalero.cybershop.controller;
 
+import com.svalero.cybershop.domain.Client;
 import com.svalero.cybershop.domain.Discount;
+import com.svalero.cybershop.exception.ClientNotFoundException;
 import com.svalero.cybershop.exception.DiscountNotFoundException;
 import com.svalero.cybershop.exception.ErrorMessage;
 import com.svalero.cybershop.service.DiscountService;
@@ -26,9 +28,14 @@ public class DiscountController {
     DiscountService discountService;
 
     @GetMapping("/discounts")
-    public ResponseEntity<List<Discount>> getDiscount(){
-        logger.info("Lista de descuentos mostrada");
-        return ResponseEntity.status(200).body(discountService.findAll());
+    public ResponseEntity<List<Discount>> getDiscount(@RequestParam(name="product",required = false,defaultValue = "")
+                                                      String product) throws DiscountNotFoundException {
+        if(product.equals("")){
+            logger.info("Lista de descuentos mostrada");
+            return ResponseEntity.status(200).body(discountService.findAll());
+        }
+        logger.info("Filtro por nombre del producto descontado");
+        return ResponseEntity.status(200).body(discountService.filterByProduct(product));
     }
 
     @GetMapping("/discounts/{id}")
@@ -59,8 +66,15 @@ public class DiscountController {
         return ResponseEntity.status(200).body(updateDiscount);
     }
 
+    @PatchMapping("/discounts/{id}")
+    public ResponseEntity<Discount> updateDiscountPartially(@PathVariable long id, @RequestBody Discount discount) throws DiscountNotFoundException{
+        Discount updateDiscountDifference = discountService.updateDiscountDifference(id, discount.getDiscounted());
+        logger.info("Precio de descuento actualizado a: "+ discount.getDiscounted());
+        return ResponseEntity.status(200).body(updateDiscountDifference);
+    }
+
     @ExceptionHandler(DiscountNotFoundException.class)
-    public ResponseEntity<ErrorMessage> clientNotFoundException(DiscountNotFoundException dnfe){
+    public ResponseEntity<ErrorMessage> discountNotFoundException(DiscountNotFoundException dnfe){
         logger.error(dnfe.getMessage(),dnfe);
         ErrorMessage notfound = new ErrorMessage(404,dnfe.getMessage());
         return new ResponseEntity<>(notfound, HttpStatus.NOT_FOUND);

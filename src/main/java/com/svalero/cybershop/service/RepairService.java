@@ -5,6 +5,7 @@ import com.svalero.cybershop.exception.RepairNotFoundException;
 import com.svalero.cybershop.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface RepairService {
@@ -18,5 +19,9 @@ public interface RepairService {
   void deleteRepair(long id) throws RepairNotFoundException;
 
   Repair updateRepair(long id, Repair repair) throws RepairNotFoundException;
+
+  Repair updateRepairedDate(long id, LocalDate newRepair) throws  RepairNotFoundException;
+
+  List<Repair> filterByShipmentDate(LocalDate shipmentDate) throws RepairNotFoundException;
 
 }

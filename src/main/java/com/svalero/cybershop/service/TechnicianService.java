@@ -17,4 +17,8 @@ public interface TechnicianService {
 
     Technician updateTechnician(long id, Technician technician) throws TechnicianNotFoundException;
 
+    Technician updateTechnicianAvailability(long id, boolean availability) throws TechnicianNotFoundException;
+
+    List<Technician> filterByNumber(int number) throws TechnicianNotFoundException;
+
 }

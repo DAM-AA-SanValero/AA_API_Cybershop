@@ -25,11 +25,16 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
-    @GetMapping("/clients")
-    public ResponseEntity<List<Client>> getClient(){
-        logger.info("Lista de clientes mostrada");
-        return ResponseEntity.status(200).body(clientService.findAll());
+     @GetMapping("/clients")
+        public ResponseEntity<List<Client>> getClients(@RequestParam(name = "vip", required = false, defaultValue = "")
+                                                            String vip) throws ClientNotFoundException {
 
+        if(vip.equals("")){
+            logger.info("Lista de clientes mostrada");
+            return ResponseEntity.status(200).body(clientService.findAll());
+        }
+         logger.info("Filtro por cliente VIP");
+        return ResponseEntity.status(200).body(clientService.filterByVip(Boolean.parseBoolean(vip)));
     }
 
     @GetMapping("/clients/{id}")
@@ -58,6 +63,13 @@ public class ClientController {
         Client updateClient =clientService.updateClient(id, client);
         logger.info("Cliente modificado");
         return ResponseEntity.status(200).body(updateClient);
+    }
+
+    @PatchMapping("/clients/{id}")
+    public ResponseEntity<Client> updateClientPartially(@PathVariable long id, @RequestBody Client client) throws ClientNotFoundException{
+        Client updateClientName = clientService.updateClientName(id, client.getName());
+        logger.info("Nombre del cliente actualizado a: "+ client.getName());
+        return ResponseEntity.status(200).body(updateClientName);
     }
 
     @ExceptionHandler(ClientNotFoundException.class)
