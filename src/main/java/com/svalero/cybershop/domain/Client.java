@@ -1,5 +1,6 @@
 package com.svalero.cybershop.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,26 +21,27 @@ public class Client {
        private long id;
 
        @Column
-       @NotBlank
-       @NotNull
+       @NotBlank(message = "<-- Este campo no puede estar vacio")
+       @NotNull(message = "<-- Este campo es obligatorio")
        private String name;
 
        @Column
-       @NotBlank
-       @NotNull
+       @NotBlank(message = "<-- Este campo no puede estar vacio")
+       @NotNull(message = "<-- Este campo es obligatorio")
        private String surname;
 
        @Column
-       @Size(max=9)
-       @PositiveOrZero
-       private int mobileNumber;
+       @PositiveOrZero(message = "<-- Este campo solo puede contener números positivos y 0")
+       private int number;
 
        @Column
-       @PastOrPresent
+       @PastOrPresent(message = "<-- Este campo no admite fechas futuras, solo actuales o pasadas")
        private LocalDate registerDate;
 
        @Column
-       private boolean isVIP;
+       private boolean vip;
 
-
+       @OneToMany(mappedBy = "id")
+       @JsonBackReference(value = "user-product")
+       private List<Product> products;
 }
