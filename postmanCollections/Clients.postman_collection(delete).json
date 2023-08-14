@@ -33,27 +33,7 @@
 			"name": "clients",
 			"request": {
 				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"Alejandra\",\r\n    \"surname\":\"Campos\",\r\n    \"number\":6440205,\r\n    \"registerDate\":\"2023-01-01\",\r\n    \"vip\":\"true\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/clients",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"clients"
-					]
-				}
+				"header": []
 			},
 			"response": []
 		},
