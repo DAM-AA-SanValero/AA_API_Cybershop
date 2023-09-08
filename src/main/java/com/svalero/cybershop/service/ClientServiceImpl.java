@@ -43,6 +43,12 @@ public class ClientServiceImpl implements ClientService{
         oldClient.setNumber(updateClient.getNumber());
         oldClient.setRegisterDate(updateClient.getRegisterDate());
         oldClient.setVip(updateClient.isVip());
+        oldClient.setLatitude(updateClient.getLatitude());
+        oldClient.setLongitude(updateClient.getLongitude());
+        oldClient.setImage(updateClient.getImage());
+        oldClient.setFavourite(updateClient.getFavourite());
+
+
         return clientRepository.save(oldClient);
     }
 

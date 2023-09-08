@@ -1,0 +1,552 @@
+2023-09-04 00:40:55,970 INFO org.springframework.boot.StartupInfoLogger [main] Starting CybershopApplication using Java 17.0.4.1 on DESKTOP-JPTMO4H with PID 28580 (C:\Users\Aussar\Documents\MisCursos\DAM\2022-2023\Acceso a datos\AA1\ActividadAprendizajeJoseRamonGimeno\cybershop\target\classes started by Aussar in C:\Users\Aussar\Documents\MisCursos\DAM\2022-2023\Acceso a datos\AA1\ActividadAprendizajeJoseRamonGimeno\cybershop)
+2023-09-04 00:40:55,969 DEBUG org.jboss.logging.LoggerProviders [background-preinit] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2023-09-04 00:40:55,972 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.7.7, Spring v5.3.24
+2023-09-04 00:40:55,972 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-09-04 00:40:56,718 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2023-09-04 00:40:56,719 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-09-04 00:40:56,719 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-09-04 00:40:56,775 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-09-04 00:40:56,832 DEBUG com.zaxxer.hikari.HikariConfig [main] Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@73d16e93
+2023-09-04 00:40:57,052 DEBUG com.zaxxer.hikari.HikariConfig [main] HikariPool-1 - configuration:
+2023-09-04 00:40:57,053 DEBUG com.zaxxer.hikari.HikariConfig [main] allowPoolSuspension................................false
+2023-09-04 00:40:57,053 DEBUG com.zaxxer.hikari.HikariConfig [main] autoCommit................................true
+2023-09-04 00:40:57,054 DEBUG com.zaxxer.hikari.HikariConfig [main] catalog................................none
+2023-09-04 00:40:57,054 DEBUG com.zaxxer.hikari.HikariConfig [main] connectionInitSql................................none
+2023-09-04 00:40:57,054 DEBUG com.zaxxer.hikari.HikariConfig [main] connectionTestQuery................................none
+2023-09-04 00:40:57,054 DEBUG com.zaxxer.hikari.HikariConfig [main] connectionTimeout................................30000
+2023-09-04 00:40:57,054 DEBUG com.zaxxer.hikari.HikariConfig [main] dataSource................................none
+2023-09-04 00:40:57,055 DEBUG com.zaxxer.hikari.HikariConfig [main] dataSourceClassName................................none
+2023-09-04 00:40:57,055 DEBUG com.zaxxer.hikari.HikariConfig [main] dataSourceJNDI................................none
+2023-09-04 00:40:57,056 DEBUG com.zaxxer.hikari.HikariConfig [main] dataSourceProperties................................{password=<masked>}
+2023-09-04 00:40:57,056 DEBUG com.zaxxer.hikari.HikariConfig [main] driverClassName................................"com.mysql.cj.jdbc.Driver"
+2023-09-04 00:40:57,056 DEBUG com.zaxxer.hikari.HikariConfig [main] exceptionOverrideClassName................................none
+2023-09-04 00:40:57,056 DEBUG com.zaxxer.hikari.HikariConfig [main] healthCheckProperties................................{}
+2023-09-04 00:40:57,056 DEBUG com.zaxxer.hikari.HikariConfig [main] healthCheckRegistry................................none
+2023-09-04 00:40:57,056 DEBUG com.zaxxer.hikari.HikariConfig [main] idleTimeout................................600000
+2023-09-04 00:40:57,056 DEBUG com.zaxxer.hikari.HikariConfig [main] initializationFailTimeout................................1
+2023-09-04 00:40:57,057 DEBUG com.zaxxer.hikari.HikariConfig [main] isolateInternalQueries................................false
+2023-09-04 00:40:57,057 DEBUG com.zaxxer.hikari.HikariConfig [main] jdbcUrl................................jdbc:mysql://localhost:3306/cybershop
+2023-09-04 00:40:57,057 DEBUG com.zaxxer.hikari.HikariConfig [main] keepaliveTime................................0
+2023-09-04 00:40:57,058 DEBUG com.zaxxer.hikari.HikariConfig [main] leakDetectionThreshold................................0
+2023-09-04 00:40:57,058 DEBUG com.zaxxer.hikari.HikariConfig [main] maxLifetime................................1800000
+2023-09-04 00:40:57,058 DEBUG com.zaxxer.hikari.HikariConfig [main] maximumPoolSize................................10
+2023-09-04 00:40:57,058 DEBUG com.zaxxer.hikari.HikariConfig [main] metricRegistry................................none
+2023-09-04 00:40:57,059 DEBUG com.zaxxer.hikari.HikariConfig [main] metricsTrackerFactory................................none
+2023-09-04 00:40:57,059 DEBUG com.zaxxer.hikari.HikariConfig [main] minimumIdle................................10
+2023-09-04 00:40:57,059 DEBUG com.zaxxer.hikari.HikariConfig [main] password................................<masked>
+2023-09-04 00:40:57,059 DEBUG com.zaxxer.hikari.HikariConfig [main] poolName................................"HikariPool-1"
+2023-09-04 00:40:57,059 DEBUG com.zaxxer.hikari.HikariConfig [main] readOnly................................false
+2023-09-04 00:40:57,059 DEBUG com.zaxxer.hikari.HikariConfig [main] registerMbeans................................false
+2023-09-04 00:40:57,059 DEBUG com.zaxxer.hikari.HikariConfig [main] scheduledExecutor................................none
+2023-09-04 00:40:57,059 DEBUG com.zaxxer.hikari.HikariConfig [main] schema................................none
+2023-09-04 00:40:57,059 DEBUG com.zaxxer.hikari.HikariConfig [main] threadFactory................................internal
+2023-09-04 00:40:57,059 DEBUG com.zaxxer.hikari.HikariConfig [main] transactionIsolation................................default
+2023-09-04 00:40:57,060 DEBUG com.zaxxer.hikari.HikariConfig [main] username................................"cyberuser"
+2023-09-04 00:40:57,060 DEBUG com.zaxxer.hikari.HikariConfig [main] validationTimeout................................5000
+2023-09-04 00:40:57,060 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-09-04 00:40:57,224 DEBUG com.zaxxer.hikari.pool.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@36463b09
+2023-09-04 00:40:57,225 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-09-04 00:40:57,339 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=1, active=0, idle=1, waiting=0)
+2023-09-04 00:40:57,355 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@412e65d3
+2023-09-04 00:40:57,367 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@21019a9c
+2023-09-04 00:40:57,378 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@a2a1c9
+2023-09-04 00:40:57,388 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@254f473c
+2023-09-04 00:40:57,398 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ba98b62
+2023-09-04 00:40:57,408 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@34ebcc5
+2023-09-04 00:40:57,417 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4d170062
+2023-09-04 00:40:57,426 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@417a62e9
+2023-09-04 00:40:57,435 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@46fa10f6
+2023-09-04 00:40:57,435 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - After adding stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:40:57,983 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-04 00:40:58,225 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 
+	c.s.c.c.ClientController:
+	{GET [/clients/{id}]}: getClient(long)
+	{PUT [/clients/{id}]}: updateClient(long,Client)
+	{POST [/clients]}: addClient(Client)
+	{DELETE [/clients/{id}]}: deleteClient(long)
+	{GET [/clients]}: getClients(String)
+	{PATCH [/clients/{id}]}: updateClientPartially(long,Client)
+2023-09-04 00:40:58,226 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 
+	c.s.c.c.DiscountController:
+	{DELETE [/discounts/{id}]}: deleteDiscount(long)
+	{PUT [/discounts/{id}]}: updateDiscount(long,Discount)
+	{POST [/discounts]}: addDiscount(Discount)
+	{GET [/discounts]}: getDiscount(String)
+	{GET [/discounts/{id}]}: getDiscount(long)
+	{PATCH [/discounts/{id}]}: updateDiscountPartially(long,Discount)
+2023-09-04 00:40:58,227 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 
+	c.s.c.c.ProductController:
+	{POST [/products]}: addProduct(Product)
+	{DELETE [/products/{id}]}: deleteProduct(long)
+	{GET [/products]}: getProduct(String)
+	{GET [/products/{id}]}: getProduct(long)
+	{PUT [/products/{id}]}: updateProduct(long,Product)
+	{PATCH [/products/{id}]}: updateProductPartially(long,Product)
+2023-09-04 00:40:58,228 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 
+	c.s.c.c.RepairController:
+	{POST [/repairs]}: addRepair(Repair)
+	{DELETE [/repairs/{id}]}: deleteRepair(long)
+	{PUT [/repairs/{id}]}: updateRepair(long,Repair)
+	{GET [/repairs/{id}]}: getRepair(long)
+	{GET [/repairs]}: getRepair(String)
+	{PATCH [/repairs/{id}]}: updateRepairPartially(long,Repair)
+2023-09-04 00:40:58,229 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 
+	c.s.c.c.TechnicianController:
+	{POST [/technicians]}: addTechnician(Technician)
+	{GET [/technicians/{id}]}: getTechnician(long)
+	{GET [/technicians]}: getTechnician(String)
+	{DELETE [/technicians/{id}]}: deleteTechnician(long)
+	{PUT [/technicians/{id}]}: updateTechnician(long,Technician)
+	{PATCH [/technicians/{id}]}: updateTechnicianPartially(long,Technician)
+2023-09-04 00:40:58,232 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+2023-09-04 00:40:58,240 DEBUG org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping [main] 'beanNameHandlerMapping' {}
+2023-09-04 00:40:58,253 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping [main] 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
+2023-09-04 00:40:58,355 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 
+	o.s.d.r.w.RepositoryController:
+	{GET [/ || ], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: listRepositories()
+	{OPTIONS [/ || ], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: optionsForRepositories()
+	{HEAD [/ || ], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: headForRepositories()
+2023-09-04 00:40:58,357 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 
+	o.s.d.r.w.RepositoryEntityController:
+	{PATCH [/{repository}/{id}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: patchItemResource(RootResourceInformation,PersistentEntityResource,Serializable,PersistentEntityResourceAssembler,ETag,String)
+	{PUT [/{repository}/{id}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: putItemResource(RootResourceInformation,PersistentEntityResource,Serializable,PersistentEntityResourceAssembler,ETag,String)
+	{DELETE [/{repository}/{id}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: deleteItemResource(RootResourceInformation,Serializable,ETag)
+	{GET [/{repository}/{id}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: getItemResource(RootResourceInformation,Serializable,PersistentEntityResourceAssembler,HttpHeaders)
+	{GET [/{repository}], produces [application/x-spring-data-compact+json || text/uri-list]}: getCollectionResourceCompact(RootResourceInformation,DefaultedPageable,Sort,PersistentEntityResourceAssembler)
+	{GET [/{repository}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: getCollectionResource(RootResourceInformation,DefaultedPageable,Sort,PersistentEntityResourceAssembler)
+	{HEAD [/{repository}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: headCollectionResource(RootResourceInformation,DefaultedPageable)
+	{OPTIONS [/{repository}/{id}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: optionsForItemResource(RootResourceInformation)
+	{HEAD [/{repository}/{id}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: headForItemResource(RootResourceInformation,Serializable,PersistentEntityResourceAssembler)
+	{OPTIONS [/{repository}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: optionsForCollectionResource(RootResourceInformation)
+	{POST [/{repository}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: postCollectionResource(RootResourceInformation,PersistentEntityResource,PersistentEntityResourceAssembler,String)
+2023-09-04 00:40:58,359 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 
+	o.s.d.r.w.RepositoryPropertyReferenceController:
+	{DELETE [/{repository}/{id}/{property}/{propertyId}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: deletePropertyReferenceId(RootResourceInformation,Serializable,String,String)
+	{GET [/{repository}/{id}/{property}], produces [text/uri-list]}: followPropertyReferenceCompact(RootResourceInformation,Serializable,String,HttpHeaders,PersistentEntityResourceAssembler)
+	{DELETE [/{repository}/{id}/{property}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: deletePropertyReference(RootResourceInformation,Serializable,String)
+	{GET [/{repository}/{id}/{property}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: followPropertyReference(RootResourceInformation,Serializable,String,PersistentEntityResourceAssembler)
+	{GET [/{repository}/{id}/{property}/{propertyId}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: followPropertyReference(RootResourceInformation,Serializable,String,String,PersistentEntityResourceAssembler)
+	{[PATCH, PUT, POST] [/{repository}/{id}/{property}], consumes [application/json || application/x-spring-data-compact+json || text/uri-list], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: createPropertyReference(RootResourceInformation,HttpMethod,CollectionModel,Serializable,String)
+2023-09-04 00:40:58,361 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 
+	o.s.d.r.w.RepositorySearchController:
+	{GET [/{repository}/search/{search}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: executeSearch(RootResourceInformation,MultiValueMap,String,DefaultedPageable,Sort,PersistentEntityResourceAssembler,HttpHeaders)
+	{GET [/{repository}/search], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: listSearches(RootResourceInformation)
+	{OPTIONS [/{repository}/search], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: optionsForSearches(RootResourceInformation)
+	{HEAD [/{repository}/search], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: headForSearches(RootResourceInformation)
+	{OPTIONS [/{repository}/search/{search}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: optionsForSearch(RootResourceInformation,String)
+	{HEAD [/{repository}/search/{search}], produces [application/hal+json || application/json || application/prs.hal-forms+json]}: headForSearch(RootResourceInformation,String)
+	{GET [/{repository}/search/{search}], produces [application/x-spring-data-compact+json]}: executeSearchCompact(RootResourceInformation,HttpHeaders,MultiValueMap,String,String,DefaultedPageable,Sort,PersistentEntityResourceAssembler)
+2023-09-04 00:40:58,363 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 
+	o.s.d.r.w.RepositorySchemaController:
+	{GET [/profile/{repository}], produces [application/schema+json]}: schema(RootResourceInformation)
+2023-09-04 00:40:58,363 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 
+	o.s.d.r.w.a.AlpsController:
+	{GET [/profile/{repository}], produces [application/alps+json || */*]}: descriptor(RootResourceInformation)
+	{OPTIONS [/profile/{repository}], produces [application/alps+json]}: alpsOptions()
+2023-09-04 00:40:58,364 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 
+	o.s.d.r.w.ProfileController:
+	{GET [/profile]}: listAllFormsOfMetadata()
+	{OPTIONS [/profile]}: profileOptions()
+2023-09-04 00:40:58,392 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2023-09-04 00:40:58,413 INFO org.springframework.boot.StartupInfoLogger [main] Started CybershopApplication in 2.645 seconds (JVM running for 2.901)
+2023-09-04 00:41:27,352 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:41:27,352 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:41:45,671 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-04 00:41:45,692 INFO com.svalero.cybershop.controller.ClientController [http-nio-8080-exec-1] Lista de clientes mostrada
+2023-09-04 00:41:53,388 INFO com.svalero.cybershop.controller.ClientController [http-nio-8080-exec-2] Lista de clientes mostrada
+2023-09-04 00:41:57,365 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:41:57,365 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:41:58,345 INFO com.svalero.cybershop.controller.ClientController [http-nio-8080-exec-3] Lista de clientes mostrada
+2023-09-04 00:42:01,258 INFO com.svalero.cybershop.controller.ClientController [http-nio-8080-exec-4] Lista de clientes mostrada
+2023-09-04 00:42:04,230 INFO com.svalero.cybershop.controller.ClientController [http-nio-8080-exec-5] Lista de clientes mostrada
+2023-09-04 00:42:27,381 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:42:27,381 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:42:57,396 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:42:57,396 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:43:27,409 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:43:27,409 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:43:57,413 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:43:57,424 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:44:27,429 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:44:27,429 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:44:34,674 INFO com.svalero.cybershop.controller.ClientController [http-nio-8080-exec-2] Lista de clientes mostrada
+2023-09-04 00:44:48,785 INFO com.svalero.cybershop.controller.ClientController [http-nio-8080-exec-3] Cliente mostrado con el id: 1
+2023-09-04 00:44:53,760 ERROR com.svalero.cybershop.controller.ClientController [http-nio-8080-exec-4] Client not found
+com.svalero.cybershop.exception.ClientNotFoundException: Client not found
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.svalero.cybershop.service.ClientServiceImpl.findById(ClientServiceImpl.java:24)
+	at com.svalero.cybershop.controller.ClientController.getClient(ClientController.java:42)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-09-04 00:44:57,446 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:44:57,446 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:44:59,482 INFO com.svalero.cybershop.controller.ClientController [http-nio-8080-exec-5] Lista de clientes mostrada
+2023-09-04 00:45:05,728 ERROR com.svalero.cybershop.controller.ClientController [http-nio-8080-exec-6] Client not found
+com.svalero.cybershop.exception.ClientNotFoundException: Client not found
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.svalero.cybershop.service.ClientServiceImpl.findById(ClientServiceImpl.java:24)
+	at com.svalero.cybershop.controller.ClientController.getClient(ClientController.java:42)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-09-04 00:45:13,497 INFO com.svalero.cybershop.controller.ClientController [http-nio-8080-exec-7] Cliente mostrado con el id: 6
+2023-09-04 00:45:18,982 INFO com.svalero.cybershop.controller.ClientController [http-nio-8080-exec-8] Filtro por cliente VIP
+2023-09-04 00:45:27,461 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:45:27,461 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:45:36,345 INFO com.svalero.cybershop.controller.ClientController [http-nio-8080-exec-9] Lista de clientes mostrada
+2023-09-04 00:45:57,476 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:45:57,476 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:46:27,478 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:46:27,478 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:46:57,494 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:46:57,494 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:47:27,501 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:47:27,501 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:47:57,511 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:47:57,511 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:48:27,524 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:48:27,524 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:48:57,534 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:48:57,534 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:49:27,538 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:49:27,538 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:49:57,544 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:49:57,545 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:50:27,557 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:50:27,557 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:50:57,562 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:50:57,562 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:51:27,565 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:51:27,565 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:51:57,579 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:51:57,579 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:52:27,589 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:52:27,589 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:52:57,602 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:52:57,602 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:53:27,612 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:53:27,612 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:53:57,614 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:53:57,614 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:54:27,615 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:54:27,615 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:54:57,625 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:54:57,625 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:55:27,632 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:55:27,632 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:55:57,639 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:55:57,639 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:56:27,648 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:56:27,648 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:56:57,655 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:56:57,655 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:57:27,662 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:57:27,662 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:57:57,666 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:57:57,666 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:58:27,671 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:58:27,671 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:58:57,676 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:58:57,676 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:59:27,677 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:59:27,677 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 00:59:57,682 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 00:59:57,682 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:00:27,696 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:00:27,696 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:00:57,703 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:00:57,703 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:01:27,714 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:01:27,714 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:01:57,727 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:01:57,727 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:02:27,738 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:02:27,739 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:02:57,750 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:02:57,750 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:03:27,766 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:03:27,766 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:03:57,782 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:03:57,782 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:04:27,786 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:04:27,788 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:04:57,801 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:04:57,801 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:05:27,815 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:05:27,815 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:05:57,829 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:05:57,829 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:06:27,840 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:06:27,840 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:06:57,842 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:06:57,842 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:07:27,855 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:07:27,855 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:07:57,862 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:07:57,862 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:08:27,876 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:08:27,876 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:08:57,891 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:08:57,891 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:09:27,900 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:09:27,901 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:09:57,909 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:09:57,909 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:10:14,688 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@412e65d3: (connection has passed maxLifetime)
+2023-09-04 01:10:14,734 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23e7120f
+2023-09-04 01:10:20,729 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@46fa10f6: (connection has passed maxLifetime)
+2023-09-04 01:10:20,738 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e7f847f
+2023-09-04 01:10:24,068 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@254f473c: (connection has passed maxLifetime)
+2023-09-04 01:10:24,076 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5e67c484
+2023-09-04 01:10:27,915 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:10:27,916 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:10:28,920 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@21019a9c: (connection has passed maxLifetime)
+2023-09-04 01:10:28,928 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@f6d710b
+2023-09-04 01:10:34,242 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@417a62e9: (connection has passed maxLifetime)
+2023-09-04 01:10:34,251 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5697b111
+2023-09-04 01:10:34,896 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@34ebcc5: (connection has passed maxLifetime)
+2023-09-04 01:10:34,905 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74711919
+2023-09-04 01:10:38,338 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@6ba98b62: (connection has passed maxLifetime)
+2023-09-04 01:10:38,345 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@77f7be32
+2023-09-04 01:10:39,383 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@4d170062: (connection has passed maxLifetime)
+2023-09-04 01:10:39,391 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@11c4e3df
+2023-09-04 01:10:42,934 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@36463b09: (connection has passed maxLifetime)
+2023-09-04 01:10:42,942 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5f7c20bf
+2023-09-04 01:10:54,690 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@a2a1c9: (connection has passed maxLifetime)
+2023-09-04 01:10:54,698 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@39d3d12f
+2023-09-04 01:10:57,929 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:10:57,929 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:11:27,933 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:11:27,933 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:11:57,937 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:11:57,937 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:12:27,953 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:12:27,953 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:12:57,966 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:12:57,966 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:13:27,978 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:13:27,978 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:13:57,989 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:13:57,990 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:14:28,007 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:14:28,007 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:14:58,013 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:14:58,013 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:15:28,027 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:15:28,028 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:15:58,033 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:15:58,033 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:16:28,036 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:16:28,036 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:16:58,045 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:16:58,047 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:17:28,048 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:17:28,048 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:17:58,065 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:17:58,065 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:18:28,073 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:18:28,073 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:18:58,080 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:18:58,080 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:19:28,083 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:19:28,083 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:19:58,090 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:19:58,090 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:20:28,092 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:20:28,096 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:20:58,098 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:20:58,098 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:21:28,105 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:21:28,105 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:21:58,119 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:21:58,119 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:22:28,129 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:22:28,129 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:22:58,134 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:22:58,134 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:23:28,146 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:23:28,146 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:23:58,148 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:23:58,148 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:24:28,163 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:24:28,163 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:24:58,179 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:24:58,179 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:25:28,188 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:25:28,188 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:25:58,202 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:25:58,202 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:26:28,214 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:26:28,214 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:26:58,225 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:26:58,225 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:27:28,241 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:27:28,242 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:27:58,244 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:27:58,244 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:28:28,256 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:28:28,256 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:28:58,260 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:28:58,260 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:29:28,272 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:29:28,272 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:29:58,278 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:29:58,279 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:30:28,285 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:30:28,285 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:30:58,286 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:30:58,286 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:31:28,289 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:31:28,289 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:31:58,291 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:31:58,291 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:32:28,302 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:32:28,302 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:32:58,304 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:32:58,304 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:33:28,305 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:33:28,305 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:33:58,317 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:33:58,317 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:34:28,326 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:34:28,326 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:34:58,338 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:34:58,338 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:35:28,351 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:35:28,351 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:35:58,352 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:35:58,353 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:36:28,363 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:36:28,363 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:36:58,378 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:36:58,378 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:37:28,403 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:37:28,403 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:37:58,413 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:37:58,413 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:38:28,419 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:38:28,419 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:38:58,426 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:38:58,426 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:39:28,437 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:39:28,437 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:39:40,116 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@23e7120f: (connection has passed maxLifetime)
+2023-09-04 01:39:40,162 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@63afbd25
+2023-09-04 01:39:54,191 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@2e7f847f: (connection has passed maxLifetime)
+2023-09-04 01:39:54,204 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@75758eb3
+2023-09-04 01:39:58,441 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:39:58,441 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2023-09-04 01:40:05,794 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@77f7be32: (connection has passed maxLifetime)
+2023-09-04 01:40:05,803 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2d98a287
+2023-09-04 01:40:06,293 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@5f7c20bf: (connection has passed maxLifetime)
+2023-09-04 01:40:06,301 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ca5a8bc
+2023-09-04 01:40:08,078 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@5697b111: (connection has passed maxLifetime)
+2023-09-04 01:40:08,085 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5d0386ad
+2023-09-04 01:40:12,066 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@39d3d12f: (connection has passed maxLifetime)
+2023-09-04 01:40:12,083 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@c8a57f3
+2023-09-04 01:40:17,794 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@5e67c484: (connection has passed maxLifetime)
+2023-09-04 01:40:17,810 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@43dcdda3
+2023-09-04 01:40:18,243 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@f6d710b: (connection has passed maxLifetime)
+2023-09-04 01:40:18,253 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e1d798
+2023-09-04 01:40:27,073 DEBUG com.zaxxer.hikari.pool.PoolBase [HikariPool-1 connection closer] HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@74711919: (connection has passed maxLifetime)
+2023-09-04 01:40:27,088 DEBUG com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator [HikariPool-1 connection adder] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@478b6ee1
+2023-09-04 01:40:28,443 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-09-04 01:40:28,443 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Fill pool skipped, pool is at sufficient level.

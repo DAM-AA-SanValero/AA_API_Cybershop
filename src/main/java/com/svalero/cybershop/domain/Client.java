@@ -41,6 +41,17 @@ public class Client {
        @Column
        private boolean vip;
 
+       @Column
+       private Float latitude;
+       @Column
+       private Float longitude;
+
+       @Column
+       private String image;
+
+       @Column
+       private Boolean favourite;
+
        @OneToMany(mappedBy = "id")
        @JsonBackReference(value = "user-product")
        private List<Product> products;

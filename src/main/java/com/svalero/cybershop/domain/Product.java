@@ -44,6 +44,9 @@ public class Product {
     @Column
     private boolean inStock;
 
+    @Column
+    private String image;
+
     @OneToMany(mappedBy = "id")
     @JsonBackReference(value = "product-repairs")
     private List<Repair> repairs;
