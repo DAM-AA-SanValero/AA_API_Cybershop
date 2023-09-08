@@ -64,8 +64,12 @@ paths:
                   name: Alejandra
                   surname: Campo
                   number: 768987323
-                  register_date: '2023-02-19'
+                  registerDate: '2023-02-19'
                   vip: true
+                  latitude: 41.8763
+                  longitude: -0.6783
+                  image: ""
+                  favourite: false
       responses:
         '201':
           description: El cliente se ha registrado correctamente (OK)
@@ -1026,6 +1030,25 @@ components:
         vip:
           type: boolean
           description: Indicar si un cliente es VIP o no lo es
+          example: true
+        latitude:
+          type: number
+          format: float
+          description: Indica la latitud
+          example: 41.6503
+        longitude:
+          type: number
+          format: float
+          description: Indica la longitud
+          example: -0.87565
+        image:
+          type: string
+          format: image
+          description: Foto del cliente
+          example: "content://com.android.externalstorage.documents/document/primary%3APictures%2FJoserra_Gimeno.png"
+        favourite:
+          type: boolean
+          description: Marca un cliente como favorito o lo desmarca
           example: true
     Discount:
       required:

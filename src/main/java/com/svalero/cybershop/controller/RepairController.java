@@ -60,7 +60,7 @@ public class RepairController {
     }
 
     @PutMapping("repairs/{id}")
-    public ResponseEntity<Repair> updateRepair(@PathVariable long id, @RequestBody Repair repair)
+    public ResponseEntity<Repair> updateRepair(@PathVariable long id,@Valid @RequestBody Repair repair)
             throws RepairNotFoundException{
         Repair updateRepair = repairService.updateRepair(id, repair);
         logger.info("Producto para reparacion actualizado");
