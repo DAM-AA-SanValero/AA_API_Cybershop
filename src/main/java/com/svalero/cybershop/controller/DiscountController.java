@@ -60,7 +60,7 @@ public class DiscountController {
     }
 
     @PutMapping("/discounts/{id}")
-    public ResponseEntity<Discount> updateDiscount(@PathVariable long id, @RequestBody Discount discount) throws DiscountNotFoundException{
+    public ResponseEntity<Discount> updateDiscount(@PathVariable long id,@Valid @RequestBody Discount discount) throws DiscountNotFoundException{
         Discount updateDiscount = discountService.updateDiscount(id, discount);
         logger.info("Descuento actualizado");
         return ResponseEntity.status(200).body(updateDiscount);

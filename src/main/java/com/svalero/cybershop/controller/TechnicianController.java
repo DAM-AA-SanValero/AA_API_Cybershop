@@ -58,7 +58,7 @@ public class TechnicianController {
         return ResponseEntity.noContent().build();
     }
     @PutMapping("technicians/{id}")
-    public ResponseEntity<Technician> updateTechnician(@PathVariable long id, @RequestBody Technician technician)
+    public ResponseEntity<Technician> updateTechnician(@PathVariable long id,@Valid @RequestBody Technician technician)
             throws TechnicianNotFoundException{
         Technician updateTechnician = technicianService.updateTechnician(id,technician);
         logger.info("Técnico actualizado");

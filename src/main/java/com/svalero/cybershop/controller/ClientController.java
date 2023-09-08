@@ -59,14 +59,14 @@ public class ClientController {
     }
 
     @PutMapping("/clients/{id}")
-    public ResponseEntity<Client> updateClient(@PathVariable long id, @RequestBody Client client) throws ClientNotFoundException {
+    public ResponseEntity<Client> updateClient(@PathVariable long id,@Valid @RequestBody Client client) throws ClientNotFoundException {
         Client updateClient =clientService.updateClient(id, client);
         logger.info("Cliente modificado");
         return ResponseEntity.status(200).body(updateClient);
     }
 
     @PatchMapping("/clients/{id}")
-    public ResponseEntity<Client> updateClientPartially(@PathVariable long id, @RequestBody Client client) throws ClientNotFoundException{
+    public ResponseEntity<Client> updateClientPartially(@PathVariable long id,@Valid @RequestBody Client client) throws ClientNotFoundException{
         Client updateClientName = clientService.updateClientName(id, client.getName());
         logger.info("Nombre del cliente actualizado a: "+ client.getName());
         return ResponseEntity.status(200).body(updateClientName);
@@ -82,7 +82,6 @@ public class ClientController {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorMessage> badRequestException(MethodArgumentNotValidException manve){
 
-        //Indicar en que campo ha fallado el cliente
         Map<String, String> errors = new HashMap<>();
         manve.getBindingResult().getAllErrors().forEach(error -> {
             String fieldname = ((FieldError) error).getField();

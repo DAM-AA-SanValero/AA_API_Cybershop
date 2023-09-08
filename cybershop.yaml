@@ -1,0 +1,1214 @@
+openapi: 3.0.1
+servers:
+  - url: /cybershop-api
+info:
+  title: Cybershop
+  description: API para la venta de productos tecnológicos.
+  version: 1.0.0
+tags:
+  - name: client
+    description: Gestión de clientes
+  - name: discount
+    description: Operaciones para realizar con descuentos
+  - name: product
+    description: Operaciones para realizar con productos
+  - name: repair
+    description: Gestión de reparaciones
+  - name: technician
+    description: Gestión de técnicos
+paths:
+  /clients:
+    get:
+      tags:
+        - client
+      summary: Listado de clientes.
+      description: Obtiene la información de todos los clientes almacenados en la base de datos.
+      parameters:
+        - name: vip
+          in: query
+          description: El cliente es VIP
+          required: false
+          schema:
+            type: boolean
+            default: false
+
+      responses:
+        '200':
+          description: Se obtiene una respuesta correcta con los clientes listados (OK)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Client'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    post:
+      tags:
+        - client
+      operationId: addClient
+      summary: Registro de un nuevo cliente
+      description: Se registra un nuevo cliente a la base de datos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+            example:
+              Ejemplo1:
+                value:
+                  name: Alejandra
+                  surname: Campo
+                  number: 768987323
+                  registerDate: '2023-02-19'
+                  vip: true
+                  latitude: 41.8763
+                  longitude: -0.6783
+                  image: ""
+                  favourite: false
+      responses:
+        '201':
+          description: El cliente se ha registrado correctamente (OK)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '400':
+          description: Error de validación (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '500':
+          description: Error interno del servidor (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  /clients/{id}:
+    get:
+      tags:
+        - client
+      operationId: getClient
+      summary: Muestra un cliente.
+      description: Se obtiene un cliente indicando su ID registrado en la Base de Datos.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          examples:
+            Ejemplo1:
+              value: 4
+      responses:
+        '200':
+          description: Se obtiene una respuesta correcta con el cliente mostrado (OK)
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Client'
+        '404':
+          description: No se ha encontrado el cliente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 2
+                message: "No se ha encontrado el cliente"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    put:
+      tags:
+        - client
+      operationId: modifyClient
+      summary: Modifica los datos de un cliente
+      description: Modifica los datos de un cliente por medio de un ID
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+          format: int64
+        examples:
+          ejemplo1:
+            value: 1
+        required: true
+      requestBody:
+        description: Actualiza los datos de un cliente existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+      responses:
+        '200':
+          description: El cliente se ha modificado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '400':
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: No se ha encontrado el cliente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 2
+                message: "No se ha encontrado el cliente"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    delete:
+      tags:
+        - client
+      operationId: deleteClient
+      summary: Eliminar un cliente
+      description: Eliminar un cliente a partir de un ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          examples:
+            Ejemplo1:
+              value: 6
+      responses:
+        '204':
+          description: Cliente eliminado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NoContent'
+        '404':
+          description: No se ha encontrado el cliente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 2
+                message: "No se ha podido encontrar el cliente"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  /discounts:
+    get:
+      tags:
+        - discount
+      summary: Listado de descuentos.
+      description: Obtiene la información de todos los descuentos de la tienda almacenados en la base de datos.
+      parameters:
+        - name: product
+          in: query
+          description: Filtra por producto
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Se obtiene una respuesta correcta con los descuentos listados (OK)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Discount'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    post:
+      tags:
+        - discount
+      operationId: addDiscount
+      summary: Registro de un nuevo descuento
+      description: Se registra un nuevo descuento a la base de datos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Discount'
+            example:
+              Ejemplo1:
+                value:
+                  product: "Huawei"
+                  event: "Navidad"
+                  discounted: -5.99
+                  startDiscount: "2023-01-20"
+                  endDiscount: "2023-01-29"
+      responses:
+        '201':
+          description: El descuento se ha registrado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+        '400':
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  /discounts/{id}:
+    get:
+      tags:
+        - discount
+      operationId: getDiscount
+      summary: Muestra un descuento.
+      description: Se obtiene un descuento indicando su ID registrado en la Base de Datos.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          examples:
+            Ejemplo1:
+              value: 1
+      responses:
+        '200':
+          description: Se obtiene una respuesta correcta con el descuento mostrado (OK)
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Discount'
+        '404':
+          description: No se ha encontrado el descuento (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 2
+                message: "No se ha encontrado el descuento"
+        '500':
+          description: Error interno del servidor (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    put:
+      tags:
+        - discount
+      operationId: modifyDiscount
+      summary: Modifica los datos de un descuento
+      description: Modifica los datos de un descuento por medio de un ID
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+            format: int64
+          examples:
+            ejemplo1:
+              value: 1
+          required: true
+      requestBody:
+        description: Actualiza los datos de un descuento existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Discount'
+      responses:
+        '200':
+          description: El descuento se ha modificado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+        '400':
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: No se ha encontrado el descuento
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 2
+                message: "No se ha encontrado el descuento"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    delete:
+      tags:
+        - discount
+      operationId: deleteDiscount
+      summary: Eliminar un descuento
+      description: Eliminar un descuento a partir de un ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          examples:
+            Ejemplo1:
+              value: 2
+      responses:
+        '204':
+          description: Descuento eliminado (OK)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NoContent'
+        '404':
+          description: No se ha encontrado el descuento (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 4
+                message: "No se ha podido encontrar el descuento"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  /products:
+    get:
+      tags:
+        - product
+      summary: Listado de productos.
+      description: Obtiene la información de todos los productos de la tienda almacenados en la base de datos.
+      parameters:
+        - name: stock
+          in: query
+          description: El producto está disponible
+          required: false
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: Se obtiene una respuesta correcta con los productos listados (OK)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    post:
+      tags:
+        - product
+      operationId: addProduct
+      summary: Registro de un nuevo producto
+      description: Se registra un nuevo producto a la base de datos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+            example:
+              Ejemplo1:
+                value:
+                  name: "Samsung Galaxy 12"
+                  type: "Movil"
+                  price: 39.99
+                  origin: "Japón"
+                  inStock: true
+      responses:
+        '201':
+          description: El producto se ha registrado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  /products/{id}:
+    get:
+      tags:
+        - product
+      operationId: getProduct
+      summary: Muestra un producto.
+      description: Se obtiene un producto indicando su ID registrado en la Base de Datos.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          examples:
+            Ejemplo1:
+              value: 1
+      responses:
+        '200':
+          description: Se obtiene una respuesta correcta con el producto mostrado (OK)
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Product'
+        '404':
+          description: No se ha encontrado el producto (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 2
+                message: "No se ha encontrado el producto"
+        '500':
+          description: Error interno del servidor (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    put:
+      tags:
+        - product
+      operationId: modifyProduct
+      summary: Modifica los datos de un producto
+      description: Modifica los datos de un producto por medio de un ID
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+            format: int64
+          examples:
+            ejemplo1:
+              value: 2
+          required: true
+      requestBody:
+        description: Actualiza los datos de un producto existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: El producto se ha modificado correctamente (OK)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: No se ha encontrado el producto (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 2
+                message: "No se ha encontrado el producto"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+
+    delete:
+      tags:
+        - product
+      operationId: deleteProduct
+      summary: Eliminar un producto
+      description: Eliminar un producto a partir de un ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          examples:
+            Ejemplo1:
+              value: 2
+      responses:
+        '204':
+          description: Producto eliminado (OK)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NoContent'
+        '404':
+          description: No se ha encontrado el producto (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 4
+                message: "No se ha podido encontrar el producto"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  /repairs:
+    get:
+      tags:
+        - repair
+      summary: Listado de reparaciones.
+      description: Obtiene la información de todas las reparaciones de la tienda almacenadas en la base de datos.
+      parameters:
+        - name: shipmentDate
+          in: query
+          description: Filtra por fecha de envío
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Se obtiene una respuesta correcta con las reparaciones listadas (OK)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Repair'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    post:
+      tags:
+        - repair
+      operationId: addRepair
+      summary: Registro de una nueva reparación
+      description: Se registra una nueva reparación a la base de datos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Repair'
+            example:
+              Ejemplo1:
+                value:
+                  component: "Ventilador"
+                  price: 29.99
+                  shippingAddress: "Avenida San Jose"
+                  shipmentDate: "2022-12-13"
+      responses:
+        '201':
+          description: La reparación se ha registrado correctamente (OK)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Repair'
+        '400':
+          description: Error de validación (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '500':
+          description: Error interno del servidor (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  /repairs/{id}:
+    get:
+      tags:
+        - repair
+      operationId: getRepair
+      summary: Muestra una reparación.
+      description: Se obtiene una reparación indicando su ID registrado en la Base de Datos.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          examples:
+            Ejemplo1:
+              value: 1
+      responses:
+        '200':
+          description: Se obtiene una respuesta correcta con la reparación mostrada (OK)
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Repair'
+        '404':
+          description: No se ha encontrado la reparación (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 2
+                message: "No se ha encontrado la reparación"
+        '500':
+          description: Error interno del servidor (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    put:
+      tags:
+        - repair
+      operationId: modifyRepair
+      summary: Modifica los datos de una reparación
+      description: Modifica los datos de una reparación por medio de un ID
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+            format: int64
+          examples:
+            ejemplo1:
+              value: 1
+          required: true
+      requestBody:
+        description: Actualiza los datos de una reparación existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Repair'
+      responses:
+        '200':
+          description: La reparación se ha modificado correctamente (OK)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Repair'
+        '400':
+          description: Error de validación (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: No se ha encontrado el descuento (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 8
+                message: "No se ha encontrado la reparación"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+
+    delete:
+      tags:
+        - repair
+      operationId: deleteRepair
+      summary: Eliminar una reparación
+      description: Eliminar una reparación a partir de un ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          examples:
+            Ejemplo1:
+              value: 1
+      responses:
+        '204':
+          description: Reparación eliminada (OK)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NoContent'
+        '404':
+          description: No se ha encontrado la reparación (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 4
+                message: "No se ha podido encontrar la reparación"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+
+  /technicians:
+    get:
+      tags:
+        - technician
+      summary: Listado de técnicos.
+      description: Obtiene la información de todos los técnicos de la tienda almacenados en la base de datos.
+      parameters:
+        - name: number
+          in: query
+          description: Filtra por número de teléfono
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Se obtiene una respuesta correcta con los técnicos listados (OK)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Technician'
+        '500':
+          description: Error interno del servidor (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    post:
+      tags:
+        - technician
+      operationId: addTechnician
+      summary: Registro de un nuevo técnico
+      description: Se registra un nuevo técnico a la base de datos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Technician'
+            example:
+              Ejemplo1:
+                value:
+                  name: "David"
+                  surname: "Casas"
+                  number: 123456789
+                  department: "Redes"
+                  available: true
+      responses:
+        '201':
+          description: El técnico se ha registrado correctamente (OK)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Technician'
+        '400':
+          description: Error de validación (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '500':
+          description: Error interno del servidor (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  /technician/{id}:
+    get:
+      tags:
+        - technician
+      operationId: getTechnician
+      summary: Muestra un técnico.
+      description: Se obtiene un técnico indicando su ID registrado en la Base de Datos.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          examples:
+            Ejemplo1:
+              value: 1
+      responses:
+        '200':
+          description: Se obtiene una respuesta correcta con el técnico mostrado (OK)
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Technician'
+        '404':
+          description: No se ha encontrado el técnico (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 18
+                message: "No se ha encontrado el técnico"
+        '500':
+          description: Error interno del servidor (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    put:
+      tags:
+        - technician
+      operationId: modifyTechnician
+      summary: Modifica los datos del técnico
+      description: Modifica los datos de un técnico por medio de un ID
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+            format: int64
+          examples:
+            ejemplo1:
+              value: 1
+          required: true
+      requestBody:
+        description: Actualiza los datos de un técnico existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Technician'
+      responses:
+        '200':
+          description: El técnico se ha modificado correctamente (OK)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Technician'
+        '400':
+          description: Error de validación (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: No se ha encontrado el técnico (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 65
+                message: "No se ha encontrado el técnico"
+        '500':
+          description: Error interno del servidor (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+
+    delete:
+      tags:
+        - technician
+      operationId: deleteTechnician
+      summary: Eliminar un técnico
+      description: Eliminar un técnico a partir de un ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          examples:
+            Ejemplo1:
+              value: 1
+      responses:
+        '204':
+          description: Técnico eliminado (OK)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NoContent'
+        '404':
+          description: No se ha encontrado el técnico (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 4
+                message: "No se ha podido encontrar el técnico"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+components:
+  schemas:
+    Client:
+      required:
+        - name
+        - surname
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 12
+        name:
+          type: string
+          description: Nombre del cliente
+          example: "Joserra"
+        surname:
+          type: string
+          description: Apellido del cliente
+          example: "Gimeno"
+        number:
+          type: number
+          format: int32
+          description: Número de teléfono del cliente
+          example: 666666666
+        registerDate:
+          type: string
+          format: date
+          description: Fecha de registro del cliente
+          example: "2021-02-28"
+        vip:
+          type: boolean
+          description: Indicar si un cliente es VIP o no lo es
+          example: true
+        latitude:
+          type: number
+          format: float
+          description: Indica la latitud
+          example: 41.6503
+        longitude:
+          type: number
+          format: float
+          description: Indica la longitud
+          example: -0.87565
+        image:
+          type: string
+          format: image
+          description: Foto del cliente
+          example: "content://com.android.externalstorage.documents/document/primary%3APictures%2FJoserra_Gimeno.png"
+        favourite:
+          type: boolean
+          description: Marca un cliente como favorito o lo desmarca
+          example: true
+    Discount:
+      required:
+        - product
+        - event
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 12
+        product:
+          type: string
+          description: Nombre del producto
+          example: "Xiaomi Redmi Note 11"
+        event:
+          type: string
+          description: Evento especial de la tienda
+          example: "Black Friday 2023"
+        discounted:
+          type: number
+          format: decimal
+          description: Parte descontada del descuento
+          example: -5.99
+        startDiscount:
+          type: string
+          format: date
+          description: Fecha de comienzo del descuento/evento
+          example: "2023-11-29"
+        endDiscount:
+          type: string
+          format: date
+          description: Fecha cuando termina del descuento/evento
+          example: "2023-11-29"
+    Product:
+      required:
+        - name
+        - type
+        - price
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 12
+        product:
+          type: string
+          description: Nombre del producto
+          example: "Playstation 5"
+        type:
+          type: string
+          description: Tipo/categoria a la que corresponde el producto
+          example: "Consola"
+        price:
+          type: number
+          format: decimal
+          description: Precio de coste del producto
+          example: 549.99
+        origin:
+          type: string
+          description: Desde donde se fabricó el producto
+          example: "Japón"
+        inStock:
+          type: boolean
+          description: Indica si el producto está disponible
+          example: false
+    Repair:
+      required:
+        - component
+        - price
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 12
+        component:
+          type: string
+          description: Nombre del componente a reparar
+          example: "Placa Base"
+        price:
+          type: number
+          format: decimal
+          description: Precio de la reparación
+          example: 39.99
+        shippingAddress:
+          type: string
+          description: Dirección de envío del cliente
+          example: "Calle Violeta Parra 9"
+        shipmentDate:
+          type: string
+          format: date
+          description: Fecha de envío del componente reparado
+          example: "2023-08-31"
+    Technician:
+      required:
+        - name
+        - surname
+        - department
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 12
+        name:
+          type: string
+          description: Nombre del técnico
+          example: "Santi"
+        surname:
+          type: string
+          description: Apellido del técnico
+          example: "Faci"
+        number:
+          type: number
+          format: int32
+          description: Número de teléfono del técnico
+          example: 999999999
+        department:
+          type: string
+          description: Departamento al que pertenece el técnico
+          example: "IT"
+        available:
+          type: boolean
+          description: Indicar si un técnico está disponible
+          example: true
+    NoContent:
+      description: Eliminado pero no aparece el contenido eliminado
+      example:
+        "No se muestra nada porque el registro se ha borrado"
+
+    ErrorResponse:
+      properties:
+        internalError:
+          type: number
+          format: int32
+        message:
+          type: string
+      type: object
+
+    BadRequest:
+      properties:
+        campo:
+          type: string
+      type: object
+      example:
+        campo: "Este campo no puede estar vacio"
+
+    EntityNotFound:
+        allOf:
+          - type: object
+          - $ref: '#/components/schemas/ErrorResponse'
+        example:
+          internalError: 2
+          message: "Entity not Found"
+
+    InternalServerError:
+        allOf:
+          - type: object
+          - $ref: '#/components/schemas/ErrorResponse'
+        example:
+          internalError: 500
+          message: "Internal Server Error"

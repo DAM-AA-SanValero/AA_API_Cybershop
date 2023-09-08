@@ -35,6 +35,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public void deleteProduct(long id) throws ProductNotFoundException {
         Product product = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        productRepository.delete(product);
     }
 
     @Override
@@ -45,6 +46,7 @@ public class ProductServiceImpl implements ProductService{
         oldProduct.setPrice(updateProduct.getPrice());
         oldProduct.setOrigin(updateProduct.getOrigin());
         oldProduct.setInStock(updateProduct.isInStock());
+        oldProduct.setImage(updateProduct.getImage());
 
         return productRepository.save(oldProduct);
     }
