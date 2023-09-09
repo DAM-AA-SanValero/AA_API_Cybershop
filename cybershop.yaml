@@ -1,10 +1,10 @@
 openapi: 3.0.1
 servers:
-  - url: /cybershop-api
+  - url: https://localhost:8080
 info:
-  title: Cybershop
+  title: "Cybershop"
   description: API para la venta de productos tecnológicos.
-  version: 1.0.0
+  version: "1.0.0"
 tags:
   - name: client
     description: Gestión de clientes
@@ -31,7 +31,7 @@ paths:
           schema:
             type: boolean
             default: false
-
+            example: true
       responses:
         '200':
           description: Se obtiene una respuesta correcta con los clientes listados (OK)
@@ -58,7 +58,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Client'
-            example:
+            examples:
               Ejemplo1:
                 value:
                   name: Alejandra
@@ -132,7 +132,7 @@ paths:
     put:
       tags:
         - client
-      operationId: modifyClient
+      operationId: updateClient
       summary: Modifica los datos de un cliente
       description: Modifica los datos de un cliente por medio de un ID
       parameters:
@@ -158,6 +158,69 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Client'
+        '400':
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: No se ha encontrado el cliente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 2
+                message: "No se ha encontrado el cliente"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    patch:
+      tags:
+        - client
+      operationId: updateClientPartially
+      summary: Modificación parcial de los datos de un cliente
+      description: Modifica los datos de un cliente de manera parcial por medio de un ID
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+            format: int64
+          examples:
+            ejemplo1:
+              value: 1
+          required: true
+      requestBody:
+        description: Actualiza un dato específico de un cliente existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+            example:
+              name: "Ana"
+      responses:
+        '200':
+          description: El cliente se ha modificado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+              example:
+                id: 12
+                name: "Ana"
+                surname: "Gimeno"
+                number: 666666666
+                registerDate: "2021-02-28"
+                vip: true
+                latitude: 41.6503
+                longitude: -0.87565
+                image: "content://com.android.externalstorage.documents/document/primary%3APictures%2FJoserra_Gimeno.png"
+                favourite: true
         '400':
           description: Error de validación
           content:
@@ -256,7 +319,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Discount'
-            example:
+            examples:
               Ejemplo1:
                 value:
                   product: "Huawei"
@@ -326,7 +389,7 @@ paths:
     put:
       tags:
         - discount
-      operationId: modifyDiscount
+      operationId: updateDiscount
       summary: Modifica los datos de un descuento
       description: Modifica los datos de un descuento por medio de un ID
       parameters:
@@ -367,6 +430,56 @@ paths:
               example:
                 EntityNotFound: 2
                 message: "No se ha encontrado el descuento"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    patch:
+      tags:
+        - discount
+      operationId: updateDiscountPartially
+      summary: Modificación parcial de los datos de un descuento
+      description: Modifica los datos de un descuento de manera parcial por medio de un ID
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+            format: int64
+          examples:
+            ejemplo1:
+              value: 1
+          required: true
+      requestBody:
+        description: Actualiza un dato específico de un descuento existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Discount'
+      responses:
+        '200':
+          description: El descuento se ha modificado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+        '400':
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: No se ha encontrado el descuento
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 2
+                message: "No se ha encontrado el cliente"
         '500':
           description: Error interno del servidor
           content:
@@ -451,7 +564,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Product'
-            example:
+            examples:
               Ejemplo1:
                 value:
                   name: "Samsung Galaxy 12"
@@ -521,7 +634,7 @@ paths:
     put:
       tags:
         - product
-      operationId: modifyProduct
+      operationId: updateProduct
       summary: Modifica los datos de un producto
       description: Modifica los datos de un producto por medio de un ID
       parameters:
@@ -568,7 +681,56 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InternalServerError'
-
+    patch:
+      tags:
+        - product
+      operationId: updateProductPartially
+      summary: Modificación parcial de los datos de un producto
+      description: Modifica los datos de un producto de manera parcial por medio de un ID
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+            format: int64
+          examples:
+            ejemplo1:
+              value: 1
+          required: true
+      requestBody:
+        description: Actualiza un dato específico de un producto existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: El producto se ha modificado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: No se ha encontrado el producto
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 2
+                message: "No se ha encontrado el producto"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
     delete:
       tags:
         - product
@@ -646,7 +808,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Repair'
-            example:
+            examples:
               Ejemplo1:
                 value:
                   component: "Ventilador"
@@ -715,7 +877,7 @@ paths:
     put:
       tags:
         - repair
-      operationId: modifyRepair
+      operationId: updateRepair
       summary: Modifica los datos de una reparación
       description: Modifica los datos de una reparación por medio de un ID
       parameters:
@@ -762,7 +924,56 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InternalServerError'
-
+    patch:
+      tags:
+        - repair
+      operationId: updateRepairPartially
+      summary: Modificación parcial de los datos de una reparación
+      description: Modifica los datos de una reparación de manera parcial por medio de un ID
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+            format: int64
+          examples:
+            ejemplo1:
+              value: 1
+          required: true
+      requestBody:
+        description: Actualiza un dato específico de una reparación existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Repair'
+      responses:
+        '200':
+          description: La reparación se ha modificado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Repair'
+        '400':
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: No se ha encontrado la reparación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 2
+                message: "No se ha encontrado la reparación"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
     delete:
       tags:
         - repair
@@ -841,7 +1052,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Technician'
-            example:
+            examples:
               Ejemplo1:
                 value:
                   name: "David"
@@ -911,7 +1122,7 @@ paths:
     put:
       tags:
         - technician
-      operationId: modifyTechnician
+      operationId: updateTechnician
       summary: Modifica los datos del técnico
       description: Modifica los datos de un técnico por medio de un ID
       parameters:
@@ -958,7 +1169,56 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InternalServerError'
-
+    patch:
+      tags:
+        - technician
+      operationId: updateTechnicianPartially
+      summary: Modificación parcial de los datos de un técnico
+      description: Modifica los datos de un técnico de manera parcial por medio de un ID
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+            format: int64
+          examples:
+            ejemplo1:
+              value: 1
+          required: true
+      requestBody:
+        description: Actualiza un dato específico de un técnico existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Technician'
+      responses:
+        '200':
+          description: El técnico se ha modificado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Technician'
+        '400':
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: No se ha encontrado el técnico
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 2
+                message: "No se ha encontrado el técnico"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
     delete:
       tags:
         - technician
