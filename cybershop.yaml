@@ -1,6 +1,6 @@
 openapi: 3.0.1
 servers:
-  - url: https://localhost:8080
+  - url: http://localhost:8080
 info:
   title: "Cybershop"
   description: API para la venta de productos tecnológicos.
@@ -41,6 +41,15 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Client'
+        '404':
+          description: No se han encontrado los clientes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 404
+                message: "No se han encontrado los clientes"
         '500':
           description: Error interno del servidor
           content:
@@ -58,18 +67,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Client'
-            examples:
-              Ejemplo1:
-                value:
-                  name: Alejandra
-                  surname: Campo
-                  number: 768987323
-                  registerDate: '2023-02-19'
-                  vip: true
-                  latitude: 41.8763
-                  longitude: -0.6783
-                  image: ""
-                  favourite: false
       responses:
         '201':
           description: El cliente se ha registrado correctamente (OK)
@@ -83,6 +80,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BadRequest'
+
         '500':
           description: Error interno del servidor (KO)
           content:
@@ -121,7 +119,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityNotFound'
               example:
-                EntityNotFound: 2
+                EntityNotFound: 404
                 message: "No se ha encontrado el cliente"
         '500':
           description: Error interno del servidor
@@ -142,7 +140,7 @@ paths:
           type: integer
           format: int64
         examples:
-          ejemplo1:
+          Ejemplo1:
             value: 1
         required: true
       requestBody:
@@ -171,7 +169,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityNotFound'
               example:
-                EntityNotFound: 2
+                EntityNotFound: 404
                 message: "No se ha encontrado el cliente"
         '500':
           description: Error interno del servidor
@@ -192,8 +190,8 @@ paths:
             type: integer
             format: int64
           examples:
-            ejemplo1:
-              value: 1
+            Ejemplo1:
+              value: 12
           required: true
       requestBody:
         description: Actualiza un dato específico de un cliente existente
@@ -234,7 +232,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityNotFound'
               example:
-                EntityNotFound: 2
+                EntityNotFound: 404
                 message: "No se ha encontrado el cliente"
         '500':
           description: Error interno del servidor
@@ -251,13 +249,12 @@ paths:
       parameters:
         - name: id
           in: path
+          description: ID del cliente
           required: true
           schema:
             type: integer
             format: int64
-          examples:
-            Ejemplo1:
-              value: 6
+          example: 12
       responses:
         '204':
           description: Cliente eliminado
@@ -272,7 +269,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityNotFound'
               example:
-                EntityNotFound: 2
+                EntityNotFound: 404
                 message: "No se ha podido encontrar el cliente"
         '500':
           description: Error interno del servidor
@@ -319,14 +316,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Discount'
-            examples:
-              Ejemplo1:
-                value:
-                  product: "Huawei"
-                  event: "Navidad"
-                  discounted: -5.99
-                  startDiscount: "2023-01-20"
-                  endDiscount: "2023-01-29"
       responses:
         '201':
           description: El descuento se ha registrado correctamente
@@ -340,6 +329,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: No se han encontrado los descuentos (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 404
+                message: "No se han encontrado los descuentos"
         '500':
           description: Error interno del servidor
           content:
@@ -378,7 +376,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityNotFound'
               example:
-                EntityNotFound: 2
+                EntityNotFound: 404
                 message: "No se ha encontrado el descuento"
         '500':
           description: Error interno del servidor (KO)
@@ -399,7 +397,7 @@ paths:
             type: integer
             format: int64
           examples:
-            ejemplo1:
+            Ejemplo1:
               value: 1
           required: true
       requestBody:
@@ -428,7 +426,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityNotFound'
               example:
-                EntityNotFound: 2
+                EntityNotFound: 404
                 message: "No se ha encontrado el descuento"
         '500':
           description: Error interno del servidor
@@ -449,8 +447,8 @@ paths:
             type: integer
             format: int64
           examples:
-            ejemplo1:
-              value: 1
+            Ejemplo1:
+              value: 2
           required: true
       requestBody:
         description: Actualiza un dato específico de un descuento existente
@@ -458,13 +456,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Discount'
+            example:
+              discounted: -9.99
       responses:
         '200':
           description: El descuento se ha modificado correctamente
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Discount'
+                $ref: '#/components/schemas/Client'
+              example:
+                  id: 2
+                  product: "Huawei"
+                  event: "Navidad"
+                  discounted: -9.99
+                  startDiscount: "2023-01-20"
+                  endDiscount: "2023-01-29"
         '400':
           description: Error de validación
           content:
@@ -478,7 +485,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityNotFound'
               example:
-                EntityNotFound: 2
+                EntityNotFound: 404
                 message: "No se ha encontrado el cliente"
         '500':
           description: Error interno del servidor
@@ -516,7 +523,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityNotFound'
               example:
-                EntityNotFound: 4
+                EntityNotFound: 404
                 message: "No se ha podido encontrar el descuento"
         '500':
           description: Error interno del servidor
@@ -547,6 +554,15 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Product'
+        '404':
+          description: No se han encontrado los productos (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 404
+                message: "No se han encontrado los productos"
         '500':
           description: Error interno del servidor
           content:
@@ -564,14 +580,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Product'
-            examples:
-              Ejemplo1:
-                value:
-                  name: "Samsung Galaxy 12"
-                  type: "Movil"
-                  price: 39.99
-                  origin: "Japón"
-                  inStock: true
       responses:
         '201':
           description: El producto se ha registrado correctamente
@@ -623,7 +631,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityNotFound'
               example:
-                EntityNotFound: 2
+                EntityNotFound: 404
                 message: "No se ha encontrado el producto"
         '500':
           description: Error interno del servidor (KO)
@@ -644,7 +652,7 @@ paths:
             type: integer
             format: int64
           examples:
-            ejemplo1:
+            Ejemplo1:
               value: 2
           required: true
       requestBody:
@@ -673,7 +681,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityNotFound'
               example:
-                EntityNotFound: 2
+                EntityNotFound: 404
                 message: "No se ha encontrado el producto"
         '500':
           description: Error interno del servidor
@@ -694,8 +702,8 @@ paths:
             type: integer
             format: int64
           examples:
-            ejemplo1:
-              value: 1
+            Ejemplo1:
+              value: 4
           required: true
       requestBody:
         description: Actualiza un dato específico de un producto existente
@@ -703,6 +711,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Product'
+            example:
+              price: 199.99
       responses:
         '200':
           description: El producto se ha modificado correctamente
@@ -710,6 +720,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
+              example:
+                id: 4
+                name: "Nintendo"
+                type: "Conso"
+                price: 199.99
+                origin: "Japan"
+                inStock: true
+                image: "content://com.android.externalstorage.documents/document/primary%3APictures%2Fgameboy.png"
         '400':
           description: Error de validación
           content:
@@ -723,7 +741,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityNotFound'
               example:
-                EntityNotFound: 2
+                EntityNotFound: 404
                 message: "No se ha encontrado el producto"
         '500':
           description: Error interno del servidor
@@ -761,7 +779,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityNotFound'
               example:
-                EntityNotFound: 4
+                EntityNotFound: 404
                 message: "No se ha podido encontrar el producto"
         '500':
           description: Error interno del servidor
@@ -791,6 +809,15 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Repair'
+        '404':
+          description: No se han encontrado las reparaciones (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 404
+                message: "No se han encontrado las reparaciónes"
         '500':
           description: Error interno del servidor
           content:
@@ -808,13 +835,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Repair'
-            examples:
-              Ejemplo1:
-                value:
-                  component: "Ventilador"
-                  price: 29.99
-                  shippingAddress: "Avenida San Jose"
-                  shipmentDate: "2022-12-13"
       responses:
         '201':
           description: La reparación se ha registrado correctamente (OK)
@@ -887,7 +907,7 @@ paths:
             type: integer
             format: int64
           examples:
-            ejemplo1:
+            Ejemplo1:
               value: 1
           required: true
       requestBody:
@@ -937,7 +957,7 @@ paths:
             type: integer
             format: int64
           examples:
-            ejemplo1:
+            Ejemplo1:
               value: 1
           required: true
       requestBody:
@@ -946,6 +966,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Repair'
+            example:
+              repairedDate: "2023-09-01"
       responses:
         '200':
           description: La reparación se ha modificado correctamente
@@ -953,6 +975,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Repair'
+              example:
+                  id: 1
+                  component: "Ventilador"
+                  price: 29.99
+                  shippingAddress: "Avenida San Jose"
+                  shipmentDate: "2022-12-13"
+                  repairedDate: "2023-09-01"
         '400':
           description: Error de validación
           content:
@@ -1035,6 +1064,15 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Technician'
+        '404':
+          description: No se han encontrado los técnicos (KO)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityNotFound'
+              example:
+                EntityNotFound: 18
+                message: "No se han encontrado los técnicos"
         '500':
           description: Error interno del servidor (KO)
           content:
@@ -1052,14 +1090,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Technician'
-            examples:
-              Ejemplo1:
-                value:
-                  name: "David"
-                  surname: "Casas"
-                  number: 123456789
-                  department: "Redes"
-                  available: true
       responses:
         '201':
           description: El técnico se ha registrado correctamente (OK)
@@ -1132,7 +1162,7 @@ paths:
             type: integer
             format: int64
           examples:
-            ejemplo1:
+            Ejemplo1:
               value: 1
           required: true
       requestBody:
@@ -1182,8 +1212,8 @@ paths:
             type: integer
             format: int64
           examples:
-            ejemplo1:
-              value: 1
+            Ejemplo1:
+              value: 2
           required: true
       requestBody:
         description: Actualiza un dato específico de un técnico existente
@@ -1191,6 +1221,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Technician'
+            example:
+              available: false
       responses:
         '200':
           description: El técnico se ha modificado correctamente
@@ -1204,6 +1236,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BadRequest'
+              example:
+                  id: 2,
+                  name: "Sandra"
+                  surname: "Pérez"
+                  number: 765432678
+                  department: "Redes"
+                  available: false
         '404':
           description: No se ha encontrado el técnico
           content:
